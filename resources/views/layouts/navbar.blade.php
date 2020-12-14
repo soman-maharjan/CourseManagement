@@ -2,8 +2,8 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="/course">Courses</a>
     <a href="/student">Students</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <a href="/staff">Staffs</a>
+    <a href="/module">Modules</a>
   </div>
   
   <div onclick="openNav()">

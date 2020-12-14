@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Module;
 
 class CourseController extends Controller
 {
@@ -27,7 +28,10 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('course.create');
+        $modules = Module::all();
+        return view('course.create',[
+            'modules' => $modules
+        ]);
     }
 
     /**
@@ -38,7 +42,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        Course::create(request()->validate([
+        request()->validate([
             'title' => 'required',
             'semester' => 'required',
             'description' => 'required',
@@ -46,8 +50,22 @@ class CourseController extends Controller
             'cost' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
-            ])
-        );
+            ]);
+
+        $course = new Course;
+        $course->title = request()->input('title');
+        $course->semester = request()->input('semester');
+        $course->description = request()->input('description');
+        $course->credit_score = request()->input('credit_score');
+        $course->cost = request()->input('cost');
+        $course->start_date = request()->input('start_date');
+        $course->end_date = request()->input('end_date');
+
+        $course->save();
+        
+        $module = Module::find(request()->input('module_id'));
+        $course->module()->sync($module);
+
         return redirect('/course');
     }
     /**
@@ -73,8 +91,10 @@ class CourseController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
+        $modules = Module::all();
         return view('course.edit',[
-            'course' => $course
+            'course' => $course,
+            'modules' => $modules
         ]);
     }
 
@@ -87,7 +107,7 @@ class CourseController extends Controller
      */
     public function update(Course $course)
     {
-        $course->update(request()->validate([
+        request()->validate([
             'title' => 'required',
             'semester' => 'required',
             'description' => 'required',
@@ -95,7 +115,21 @@ class CourseController extends Controller
             'cost' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
-        ]));
+            ]);
+
+        $course->title = request()->input('title');
+        $course->semester = request()->input('semester');
+        $course->description = request()->input('description');
+        $course->credit_score = request()->input('credit_score');
+        $course->cost = request()->input('cost');
+        $course->start_date = request()->input('start_date');
+        $course->end_date = request()->input('end_date');
+
+        $course->save();
+        
+        $module = Module::find(request()->input('module_id'));
+        $course->module()->sync($module);
+
         return redirect('/course');
     }
 

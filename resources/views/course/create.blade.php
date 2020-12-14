@@ -46,6 +46,17 @@
       @enderror
     </div>
   </div>
+  <div class="form-group">
+    <label for="module_id">Select Module (Use Ctrl + to select multiple Options)</label><br>
+    <select multiple size="3" class="module_id" name="module_id[]">
+      @foreach($modules as $module)
+      <option value="{{$module->id}}">{{$module->title}}</option>
+      @endforeach
+     </select>
+    @error('module_id')
+    <p style="color: red">{{ $message }}</p>
+    @enderror
+  </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="start_date">Start Date</label>

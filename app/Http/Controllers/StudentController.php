@@ -98,9 +98,9 @@ class StudentController extends Controller
             'last_name' => 'required',
             'course_id' => 'required',
             'date_of_birth' => 'required',
-            'email' => 'required|unique:students',
+            'email' => 'required',
             'gender' => 'required',
-            'mobile_number' => 'required|unique:students',
+            'mobile_number' => 'required',
             'address' => 'required'
         ]));
 

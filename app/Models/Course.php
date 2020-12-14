@@ -13,5 +13,9 @@ class Course extends Model
     public function student(){
         return $this->hasMany(Student::class);
     }
+
+    public function module(){
+        return $this->belongsToMany(Module::class,'course_modules','course_id','module_id');
+    }
 }
  

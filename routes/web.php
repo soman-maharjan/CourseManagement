@@ -24,3 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/course',App\Http\Controllers\CourseController::class);
 
 Route::resource('/student',App\Http\Controllers\StudentController::class);
+
+Route::resource('/staff',App\Http\Controllers\StaffController::class);
+
+Route::resource('/module',App\Http\Controllers\ModuleController::class);
+
