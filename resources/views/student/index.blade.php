@@ -24,14 +24,21 @@
             <td>{{$student->course->title}}</td>
             <td>{{$student->mobile_number}}</td>
             <td>{{$student->address}}</td>
-            <td style="display: inline-flex"><a href="/student/{{$student->id}}/edit"><button
-                        class="btn btn-primary">Edit</button> </a>
+            <td style="display: inline-flex">
+                <a href="/student/{{$student->id}}/edit"><button class="btn btn-primary icon-button">
+                    <img src="{{ asset('icons/edit.png') }}" class="edit-icon">
+                  </button>
+                </a>
+        
                 <form action="/student/{{$student->id}}" method="POST">
-                    <input type="hidden" name="_method" value="delete" />
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <button class="btn btn-danger">Delete</button>
+                  <input type="hidden" name="_method" value="delete" />
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <button class="btn btn-danger icon-button"><img src="{{ asset('icons/remove.png') }}" class="edit-icon"></button>
                 </form>
-                <a href="/student/{{$student->id}}">Show</a>
+        
+                <a href="/student/{{$student->id}}"><button class="btn btn-success icon-button">
+                  <img src="{{ asset('icons/show.png') }}" class="edit-icon">
+                </button>
             </td>
         </tr>
         @endforeach

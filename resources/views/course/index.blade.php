@@ -28,14 +28,22 @@
       <td>{{$course->cost}}</td>
       <td>{{$course->start_date}}</td>
       <td>{{$course->end_date}}</td>
-      <td style="display: inline-flex"><a href="/course/{{$course->id}}/edit"><button
-            class="btn btn-primary">Edit</button> </a>
+      <td style="display: inline-flex">
+        <a href="/course/{{$course->id}}/edit"><button class="btn btn-primary icon-button">
+            <img src="{{ asset('icons/edit.png') }}" class="edit-icon">
+          </button>
+        </a>
+
         <form action="/course/{{$course->id}}" method="POST">
           <input type="hidden" name="_method" value="delete" />
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger icon-button"><img src="{{ asset('icons/remove.png') }}" class="edit-icon"></button>
         </form>
-        <a href="/course/{{$course->id}}">Show</a>
+
+        <a href="/course/{{$course->id}}"><button class="btn btn-success icon-button">
+          <img src="{{ asset('icons/show.png') }}" class="edit-icon">
+        </button>
+      
       </td>
     </tr>
     @endforeach

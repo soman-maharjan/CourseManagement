@@ -8,9 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Course Management System</title>
 
-    
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,14 +27,14 @@
 </head>
 
 <body>
-    
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                @include('layouts.navbar')
+
 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Course Management System
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -87,6 +87,16 @@
             </div>
         </nav>
         <main class="py-4 container-fluid">
+            @if(auth::check())
+            @include('layouts.navbar')
+            @else
+            <style>
+                #app {
+                    margin-left: 0px !important;
+                    padding: 0px 0px !important;
+                }
+            </style>
+            @endif
             @yield('content')
         </main>
     </div>

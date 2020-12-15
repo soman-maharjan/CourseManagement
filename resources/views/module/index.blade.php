@@ -22,14 +22,21 @@
             <td>{{$module->credit_score}}</td>
             <td>{{$module->start_date}}</td>
             <td>{{$module->end_date}}</td>
-            <td style="display: inline-flex"><a href="/module/{{$module->id}}/edit"><button
-                        class="btn btn-primary">Edit</button> </a>
+            <td style="display: inline-flex">
+                <a href="/module/{{$module->id}}/edit"><button class="btn btn-primary icon-button">
+                    <img src="{{ asset('icons/edit.png') }}" class="edit-icon">
+                  </button>
+                </a>
+        
                 <form action="/module/{{$module->id}}" method="POST">
-                    <input type="hidden" name="_method" value="delete" />
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <button class="btn btn-danger">Delete</button>
+                  <input type="hidden" name="_method" value="delete" />
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <button class="btn btn-danger icon-button"><img src="{{ asset('icons/remove.png') }}" class="edit-icon"></button>
                 </form>
-                <a href="/module/{{$module->id}}">Show</a>
+        
+                <a href="/module/{{$module->id}}"><button class="btn btn-success icon-button">
+                  <img src="{{ asset('icons/show.png') }}" class="edit-icon">
+                </button>
             </td>
         </tr>
         @endforeach

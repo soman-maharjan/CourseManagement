@@ -1,13 +1,7 @@
 <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <h4 style="text-align: center; color:whitesmoke">DashBoard</h4>
     <a href="/course">Courses</a>
     <a href="/student">Students</a>
     <a href="/staff">Staffs</a>
     <a href="/module">Modules</a>
-  </div>
-  
-  <div onclick="openNav()">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
   </div>

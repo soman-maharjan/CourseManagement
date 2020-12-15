@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/course',App\Http\Controllers\CourseController::class);
+Route::resource('/course',App\Http\Controllers\CourseController::class)->middleware('auth');
 
-Route::resource('/student',App\Http\Controllers\StudentController::class);
+Route::resource('/student',App\Http\Controllers\StudentController::class)->middleware('auth');
 
-Route::resource('/staff',App\Http\Controllers\StaffController::class);
+Route::resource('/staff',App\Http\Controllers\StaffController::class)->middleware('auth');
 
-Route::resource('/module',App\Http\Controllers\ModuleController::class);
+Route::resource('/module',App\Http\Controllers\ModuleController::class)->middleware('auth');
+
+
 

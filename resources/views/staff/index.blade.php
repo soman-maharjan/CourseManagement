@@ -24,13 +24,21 @@
         <td>{{$staff->job_title}}</td>
         <td>{{$staff->number}}</td>
         <td>{{$staff->address}}</td>
-        <td style="display: inline-flex"><a href="/staff/{{$staff->id}}/edit"><button class="btn btn-primary">Edit</button> </a>
-            <form action="/staff/{{$staff->id}}" method="POST">
-                <input type="hidden" name="_method" value="delete" />
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <button class="btn btn-danger">Delete</button>
-            </form>
-            <a href="/staff/{{$staff->id}}">Show</a>
+        <td style="display: inline-flex">
+          <a href="/staff/{{$staff->id}}/edit"><button class="btn btn-primary icon-button">
+            <img src="{{ asset('icons/edit.png') }}" class="edit-icon">
+          </button>
+        </a>
+
+        <form action="/staff/{{$staff->id}}" method="POST">
+          <input type="hidden" name="_method" value="delete" />
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <button class="btn btn-danger icon-button"><img src="{{ asset('icons/remove.png') }}" class="edit-icon"></button>
+        </form>
+
+        <a href="/staff/{{$staff->id}}"><button class="btn btn-success icon-button">
+          <img src="{{ asset('icons/show.png') }}" class="edit-icon">
+        </button>
         </td>
       </tr>
       @endforeach
