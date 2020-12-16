@@ -22,7 +22,11 @@ class CreateCoursesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('cost');
+            $table->unsignedBigInteger('course_leader');
             $table->timestamps();
+        });
+        Schema::table('courses', function (Blueprint $table) {
+            $table->foreign('course_leader')->references('id')->on('staff')->onDelete('cascade');
         });
     }
 

@@ -34,7 +34,7 @@
 
 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Course Management System
+                    <img src="{{asset('icons/logo.bmp')}}" alt="Logo" class="college-logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

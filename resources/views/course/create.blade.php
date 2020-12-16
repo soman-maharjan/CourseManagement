@@ -29,6 +29,21 @@
     <p style="color: red">{{ $message }}</p>
     @enderror
   </div>
+  <div class="form-group">
+
+    <label for="module_leader">Course Leader</label>
+    <select class="form-control" name="course_leader">
+
+        @foreach ($staffs as $staff)
+        <option value="{{ $staff->id }}">
+            {{ $staff->first_name }} {{ $staff->last_name }}
+        </option>
+        @endforeach
+    </select>
+    @error('course_leader')
+    <p style="color: red">{{ $message }}</p>
+    @enderror
+</div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="credit_score">Credit Score</label>

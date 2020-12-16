@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Module;
+use App\Models\Staff;
 
 class CourseController extends Controller
 {
@@ -28,9 +29,11 @@ class CourseController extends Controller
      */
     public function create()
     {
+        $staffs = Staff::all();
         $modules = Module::all();
         return view('course.create',[
-            'modules' => $modules
+            'modules' => $modules,
+            'staffs' => $staffs
         ]);
     }
 
@@ -49,7 +52,8 @@ class CourseController extends Controller
             'credit_score' => 'required',
             'cost' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required'
+            'end_date' => 'required',
+            'course_leader' => 'required'
             ]);
 
         $course = new Course;
@@ -60,6 +64,7 @@ class CourseController extends Controller
         $course->cost = request()->input('cost');
         $course->start_date = request()->input('start_date');
         $course->end_date = request()->input('end_date');
+        $course->course_leader = request()->input('course_leader');
 
         $course->save();
         
@@ -90,11 +95,13 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
+        $staffs = Staff::all();
         $course = Course::find($id);
         $modules = Module::all();
         return view('course.edit',[
             'course' => $course,
-            'modules' => $modules
+            'modules' => $modules,
+            'staffs' => $staffs
         ]);
     }
 

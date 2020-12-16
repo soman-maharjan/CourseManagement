@@ -30,10 +30,8 @@
         </div>
     </div>
     <div class="form-group">
-
         <label for="module_leader">Module Leader</label>
         <select class="form-control" name="module_leader">
-
             @foreach ($staffs as $staff)
             <option value="{{ $staff->id }}">
                 {{ $staff->first_name }} {{ $staff->last_name }}

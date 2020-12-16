@@ -20,10 +20,12 @@ class CreateStudentsTable extends Migration
             $table->string('last_name');
             $table->char('gender');
             $table->date('date_of_birth');
+            $table->date('date_joined');
             $table->string('email')->unique();
             $table->string('mobile_number')->unique();
             $table->string('address');
             $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('pat_id');
             $table->timestamps();
         });
 
