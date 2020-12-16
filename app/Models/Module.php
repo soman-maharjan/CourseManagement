@@ -18,5 +18,14 @@ class Module extends Model
     public function course(){
         return $this->belongsToMany(Course::class, 'course_modules','module_id','course_id');
     }
+
+    public function assignment(){
+        return $this->belongsTo(Assignment::class);
+    }
+
+    public function student_attendance(){
+        return $this->belongsToMany(Attendance::class, 'attendances', 'module_id', 'student_id')->withPivot('status', 'attendance_date');
+    }
 }
+
 

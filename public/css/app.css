@@ -10951,3 +10951,9 @@ a.text-dark:focus {
 .college-logo{
   height: 60px;
 }
+.create-button{
+  margin: 10px;
+  margin-left: 0px;
+  margin-top: 0px;
+  float: right;
+}

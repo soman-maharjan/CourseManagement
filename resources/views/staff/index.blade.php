@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<a href="/staff/create"><button class="btn btn-success">Create</button></a>
+<div >
+  <a href="/staff/create"><button class="btn btn-success create-button">Create a new Record</button></a>
+</div>
 <table class="table table-hover">
     <thead class="thead-dark">
       <tr>

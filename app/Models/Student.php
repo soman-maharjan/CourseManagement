@@ -14,4 +14,7 @@ class Student extends Model
     public function course(){
         return $this->belongsTo(Course::class,'course_id');
     }
+    public function module_attendance(){
+        return $this->belongsToMany(Attendance::class, 'attendances', 'student_id', 'module_id')->withPivot('status', 'attendance_date');
+    }
 }

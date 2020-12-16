@@ -27,5 +27,8 @@ Route::resource('/staff',App\Http\Controllers\StaffController::class)->middlewar
 
 Route::resource('/module',App\Http\Controllers\ModuleController::class)->middleware('auth');
 
+Route::resource('/assignment',App\Http\Controllers\AssignmentController::class)->middleware('auth');
 
+Route::resource('/attendance',App\Http\Controllers\AttendanceController::class)->middleware('auth');
 
+Route::post('/attendance/report', [App\Http\Controllers\AttendanceController::class, 'report'])->name('report');
