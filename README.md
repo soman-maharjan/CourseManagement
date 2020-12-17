@@ -5,7 +5,7 @@ Installation Guide
 2. Run following commands in command Prompt
 ```
 composer global require "laravel/installer=~1.1"
-git clone 
+git clone https://github.com/soman-maharjan/CourseManagement.git
 cd CourseManagement
 composer install
 npm install
@@ -17,8 +17,10 @@ npm install
 cp .env.example .env
 php artisan key:generate
 ```
-Create database name "course-management" using MySql from xampp (localhost/phpmyadmin)
+Create database name "coursemanagement" using MySql from xampp (localhost/phpmyadmin)
 
 ```
 php artisan migrate --seed
+php artisan storage:link
+php artisan serve
 ```
