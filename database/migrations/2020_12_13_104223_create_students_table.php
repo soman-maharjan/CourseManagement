@@ -25,12 +25,14 @@ class CreateStudentsTable extends Migration
             $table->string('mobile_number')->unique();
             $table->string('address');
             $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('pat_id');
+            $table->unsignedBigInteger('pat_id')->nullable();
             $table->timestamps();
         });
 
         Schema::table('students', function (Blueprint $table) {
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('pat_id')->references('id')->on('staff')->onDelete('cascade');
+
         });
     }
 

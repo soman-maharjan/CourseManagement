@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Staff;
+use App\Models\Course;
+use App\Models\Student;
+use App\Models\User;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +28,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $staffCount = count(Staff::all());
+        $courseCount = count(Course::all());
+        $studentCount = count(Student::all());
+        $userCount = count(User::all());
+
+        return view('home',[
+            'staffCount' => $staffCount,
+            'courseCount' => $courseCount,
+            'studentCount' => $studentCount,
+            'userCount' => $userCount
+        ]);
     }
 }

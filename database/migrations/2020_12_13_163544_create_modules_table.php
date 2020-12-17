@@ -20,7 +20,7 @@ class CreateModulesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('credit_score');
-            $table->unsignedBigInteger('module_leader');
+            $table->unsignedBigInteger('module_leader')->nullable();
             $table->timestamps();
         });
 

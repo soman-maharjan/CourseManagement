@@ -14,4 +14,7 @@ class Staff extends Model
     public function module(){
         return $this->hasMany(Module::class);
     }
+    public function student(){
+        return $this->hasMany(Student::class);
+    }
 }

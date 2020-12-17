@@ -3,11 +3,11 @@
 <div >
     <a href="/module/create"><button class="btn btn-success create-button">Create a new Record</button></a>
 </div>
-<table class="table table-hover">
+<table class="table table-hover table-striped">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Title</th>
-            <th scope="col">Module Leader</th>
+            <th scope="col">Description</th>
             <th scope="col">Credit Score</th>
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
@@ -20,7 +20,7 @@
         @foreach ($modules as $module)
         <tr>
             <th scope="row">{{$module->title}}</th>
-            <td>{{$module->staff->first_name}} {{$module->staff->last_name}}</td>
+            <td>{{$module->description}}</td>
             <td>{{$module->credit_score}}</td>
             <td>{{$module->start_date}}</td>
             <td>{{$module->end_date}}</td>

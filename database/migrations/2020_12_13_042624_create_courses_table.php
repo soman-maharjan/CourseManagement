@@ -22,7 +22,7 @@ class CreateCoursesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('cost');
-            $table->unsignedBigInteger('course_leader');
+            $table->unsignedBigInteger('course_leader')->nullable();
             $table->timestamps();
         });
         Schema::table('courses', function (Blueprint $table) {

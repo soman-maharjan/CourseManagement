@@ -42,6 +42,14 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="date_joined">Date Joined</label>
+        <input type="date" class="form-control" id="date_joined" placeholder="2020-12-9" name="date_joined"
+            value="{{old('date_joined')}}">
+        @error('date_joined')
+        <p style="color: red">{{ $message }}</p>
+        @enderror
+    </div>
+    <div class="form-group">
 
         <label for="course_id">Course</label>
         <select class="form-control" name="course_id">

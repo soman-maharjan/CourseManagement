@@ -17,8 +17,8 @@ class CreateAssignmentsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('assignment_file');
-            $table->date('submission_date');
+            $table->string('assignment_file')->nullable();
+            $table->date('submission_date')->nullable();
             $table->unsignedBigInteger('module_id');
             $table->timestamps();
         });

@@ -6,4 +6,5 @@
   <a href="/module">Modules</a>
   <a href="/assignment">Assignments</a>
   <a href="/attendance">Attendance</a>
+  <a href="/personal-tutor">Personal Tutor</a>
 </div>

@@ -51,7 +51,7 @@ class ModuleController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'credit_score' => 'required',
-            'module_leader' => 'required'
+            'module_leader' => 'nullable'
             ]);
 
         $module = new Module;
@@ -117,7 +117,7 @@ class ModuleController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'credit_score' => 'required',
-            'module_leader' => 'required'
+            'module_leader' => 'nullable'
             ]);
 
         $module->title = request()->input('title');

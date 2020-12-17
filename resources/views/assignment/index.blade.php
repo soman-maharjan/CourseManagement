@@ -4,7 +4,7 @@
     <a href="/assignment/create"><button class="btn btn-success create-button">Create a new Record</button></a>
 </div>
 
-<table class="table table-hover">
+<table class="table table-hover table-striped">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Title</th>
@@ -13,8 +13,6 @@
             <th scope="col">File Name</th>
             <th scope="col">Submission Date</th>
             <th scope="col">Options</th>
-
-
         </tr>
     </thead>
     <tbody>

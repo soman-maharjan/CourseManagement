@@ -53,7 +53,7 @@ class CourseController extends Controller
             'cost' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'course_leader' => 'required'
+            'course_leader' => 'nullable'
             ]);
 
         $course = new Course;
@@ -121,7 +121,9 @@ class CourseController extends Controller
             'credit_score' => 'required',
             'cost' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required'
+            'end_date' => 'required',
+            'end_date' => 'nullable'
+
             ]);
 
         $course->title = request()->input('title');
@@ -131,6 +133,7 @@ class CourseController extends Controller
         $course->cost = request()->input('cost');
         $course->start_date = request()->input('start_date');
         $course->end_date = request()->input('end_date');
+        $course->course_leader = request()->input('course_leader');
 
         $course->save();
         

@@ -17,4 +17,7 @@ class Student extends Model
     public function module_attendance(){
         return $this->belongsToMany(Attendance::class, 'attendances', 'student_id', 'module_id')->withPivot('status', 'attendance_date');
     }
+    public function staff(){
+        return $this->belongsTo(Staff::class,'pat_id');
+    }
 }

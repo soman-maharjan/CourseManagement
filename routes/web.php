@@ -32,3 +32,9 @@ Route::resource('/assignment',App\Http\Controllers\AssignmentController::class)-
 Route::resource('/attendance',App\Http\Controllers\AttendanceController::class)->middleware('auth');
 
 Route::post('/attendance/report', [App\Http\Controllers\AttendanceController::class, 'report'])->name('report');
+
+Route::get('/personal-tutor', [App\Http\Controllers\PersonalTutorController::class, 'index']);
+
+Route::get('/personal-tutor/create', [App\Http\Controllers\PersonalTutorController::class, 'create']);
+
+Route::post('/personal-tutor', [App\Http\Controllers\PersonalTutorController::class, 'assign']);
