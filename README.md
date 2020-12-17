@@ -1,6 +1,7 @@
 # CourseManagement
 Installation Guide
 1. Download Composer (https://getcomposer.org/)
+2. Download npm @ node.js (https://nodejs.org/en/)
 2. Run following commands in command Prompt
 ```
 composer global require "laravel/installer=~1.1"
