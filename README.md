@@ -21,4 +21,6 @@ Create database name "coursemanagement" using MySql from xampp (localhost/phpmya
 
 ```
 php artisan migrate --seed
+php artisan storage:link
+php artisan serve
 ```
