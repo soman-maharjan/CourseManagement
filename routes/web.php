@@ -38,3 +38,7 @@ Route::get('/personal-tutor', [App\Http\Controllers\PersonalTutorController::cla
 Route::get('/personal-tutor/create', [App\Http\Controllers\PersonalTutorController::class, 'create']);
 
 Route::post('/personal-tutor', [App\Http\Controllers\PersonalTutorController::class, 'assign']);
+
+Route::get('/calendar', function () {
+    return view('calendar');
+});

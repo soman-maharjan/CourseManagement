@@ -7,4 +7,6 @@
   <a href="/assignment">Assignments</a>
   <a href="/attendance">Attendance</a>
   <a href="/personal-tutor">Personal Tutor</a>
+  <a href="/calendar">Calendar</a>
+
 </div>
