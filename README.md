@@ -17,7 +17,7 @@ npm install
 cp .env.example .env
 php artisan key:generate
 ```
-Create database name "course-management" using MySql from xampp (localhost/phpmyadmin)
+Create database name "coursemanagement" using MySql from xampp (localhost/phpmyadmin)
 
 ```
 php artisan migrate --seed
