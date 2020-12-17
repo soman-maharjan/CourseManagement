@@ -5,7 +5,7 @@ Installation Guide
 2. Run following commands in command Prompt
 ```
 composer global require "laravel/installer=~1.1"
-git clone 
+git clone https://github.com/soman-maharjan/CourseManagement.git
 cd CourseManagement
 composer install
 npm install
