@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;  
 use App\Models\Staff;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,20 +28,13 @@ class DatabaseSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('users')->insert([
-            'name' => 'Staff',
-            'email' => 'staff@staff.com',
-            'password' => Hash::make('password'),
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
         DB::table('staff')->insert([
-            'first_name' => 'Ankit',
-            'last_name' => 'Thapa',
+            'first_name' => 'Staff',
+            'last_name' => 'Staff',
             'gender' => 'M',
             'date_of_birth' => Carbon::now()->format('Y-m-d H:i:s'),
-            'email' => 'ankitthapa@gmail.com',
-            'number' => '9812878121',
+            'email' => 'staff@staff.com',
+            'number' => '9876543210',
             'address' => 'Kathmandu',
             'job_title' => 'Teacher',
             'salary' => 75000,
@@ -76,20 +70,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('staff')->insert([
-            'first_name' => 'Test',
-            'last_name' => 'User',
-            'gender' => 'F',
-            'date_of_birth' => Carbon::now()->format('Y-m-d H:i:s'),
-            'email' => 'testuser@gmail.com',
-            'number' => '9281212442',
-            'address' => 'Bhaktapur',
-            'job_title' => 'Lecturer',
-            'salary' => 10000,
-            'date_joined' => Carbon::now()->format('Y-m-d H:i:s'),
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+
         DB::table('courses')->insert([
             'title' => 'Bsc. Computing (Software Engineering)',
             'semester' => 6,
@@ -129,7 +110,7 @@ class DatabaseSeeder extends Seeder
         DB::table('students')->insert([
             'first_name' => 'Soman',
             'last_name' => 'Maharjan',
-            'gender' => '=M',
+            'gender' => 'M',
             'date_of_birth' => Carbon::now()->format('Y-m-d H:i:s'),
             'date_joined' => Carbon::now()->format('Y-m-d H:i:s'),
             'email' => 'maharjansoman@yahoo.com',
@@ -139,5 +120,48 @@ class DatabaseSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+        DB::table('roles')->insert([
+            'title' => 'Staff',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('roles')->insert([
+            'title' => 'Student',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Soman',
+            'email' => 'maharjansoman@yahoo.com',
+            'password' => Hash::make('9841551187'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Staff',
+            'email' => 'staff@staff.com',
+            'password' => Hash::make('password'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Kumar',
+            'email' => 'kumarlamichhane@gmail.com',
+            'password' => Hash::make('9281231242'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Nischal',
+            'email' => 'nischalkhadka@gmail.com',
+            'password' => Hash::make('9281233442'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        User::where('email','maharjansoman@yahoo.com')->update(['role_id' => 2]);
+        User::where('email','staff@staff.com')->update(['role_id' => 1]);
+        User::where('email','kumarlamichhane@gmail.com')->update(['role_id' => 1]);
+        User::where('email','nischalkhadka@gmail.com')->update(['role_id' => 1]);
+
     }
 }

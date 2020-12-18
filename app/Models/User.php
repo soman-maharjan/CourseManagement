@@ -40,4 +40,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public static function getRole(){
+    //     return User::where('id',auth()->id())->pluck('role_id');
+    // }
 }

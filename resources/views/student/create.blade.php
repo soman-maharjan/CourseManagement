@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <h2>Create Student Records</h2>
 <form method="POST" action="/student">
     @csrf

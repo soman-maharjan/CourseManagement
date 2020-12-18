@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Module;
 use App\Models\Staff;
+use App\Models\User;
 
 class CourseController extends Controller
 {
@@ -16,6 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
+        dd(User::find(auth()->id()));
         $courses = Course::all();
         return view('course.index',[
             'courses' => $courses

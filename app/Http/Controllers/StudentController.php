@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Roles;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Carbon;
+use App\Models\User;
 
 class StudentController extends Controller
 {
@@ -52,6 +56,15 @@ class StudentController extends Controller
             'mobile_number' => 'required|unique:students',
             'address' => 'required'
         ]));
+
+        User::create([
+            'name' => request()->input('first_name'),
+            'email' => request()->input('email'),
+            'password' => Hash::make(request()->input('mobile_number')),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        User::where('email', request()->input('email'))->update(['role_id' => 2]);
 
         return redirect('/student');
     }
@@ -117,6 +130,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        User::where('email',$student->email)->delete();
         $student->delete();
         return redirect('/student');
     }
