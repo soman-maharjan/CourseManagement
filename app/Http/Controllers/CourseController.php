@@ -102,6 +102,7 @@ class CourseController extends Controller
             'course' => $course,
             'modules' => $modules,
             'staffs' => $staffs
+            
         ]);
     }
 
