@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div >
+<div>
     <a href="/student/create"><button class="btn btn-success create-button">Create a new Record</button></a>
 </div>
 <table class="table table-hover table-striped">
@@ -28,19 +28,20 @@
             <td>{{$student->address}}</td>
             <td style="display: inline-flex">
                 <a href="/student/{{$student->id}}/edit"><button class="btn btn-primary icon-button">
-                    <img src="{{ asset('icons/edit.png') }}" class="edit-icon">
-                  </button>
+                        <img src="{{ asset('icons/edit.png') }}" class="edit-icon">
+                    </button>
                 </a>
-        
+
                 <form action="/student/{{$student->id}}" method="POST">
-                  <input type="hidden" name="_method" value="delete" />
-                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                  <button class="btn btn-danger icon-button"><img src="{{ asset('icons/remove.png') }}" class="edit-icon"></button>
+                    <input type="hidden" name="_method" value="delete" />
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button class="btn btn-danger icon-button"><img src="{{ asset('icons/remove.png') }}"
+                            class="edit-icon"></button>
                 </form>
-        
+
                 <a href="/student/{{$student->id}}"><button class="btn btn-success icon-button">
-                  <img src="{{ asset('icons/show.png') }}" class="edit-icon">
-                </button>
+                        <img src="{{ asset('icons/show.png') }}" class="edit-icon">
+                    </button>
             </td>
         </tr>
         @endforeach
@@ -51,4 +52,7 @@
         @endif
     </tbody>
 </table>
+<div class="d-flex justify-content-center">
+    {{$students->links()}}
+</div>
 @endsection

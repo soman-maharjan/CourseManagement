@@ -46,14 +46,21 @@
     <div class="form-group">
         <label for="module_id">Select Course (Use Ctrl + to select multiple Options)</label><br>
         <select multiple size="3" class="course_id" name="course_id[]">
-          @foreach($courses as $course)
-          <option value="{{$course->id}}">{{$course->title}}</option>
-          @endforeach
-         </select>
+            @foreach($courses as $course)
+            <option value="{{$course->id}}">{{$course->title}}</option>
+            @endforeach
+        </select>
         @error('module_id')
         <p style="color: red">{{ $message }}</p>
         @enderror
-      </div>
+    </div>
+    <div class="form-group">
+        <label for="module_code">Module Code</label>
+        <input type="text" class="form-control" id="module_code" name="module_code" value="{{old('module_code')}}">
+        @error('module_code')
+        <p style="color: red">{{ $message }}</p>
+        @enderror
+    </div>
     <div class="form-group">
         <label for="credit_score">Credit Score</label>
         <input type="number" class="form-control" id="credit_score" name="credit_score" value="{{old('credit_score')}}">

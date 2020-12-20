@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Carbon;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +42,12 @@ Route::get('/personal-tutor/create', [App\Http\Controllers\PersonalTutorControll
 Route::post('/personal-tutor', [App\Http\Controllers\PersonalTutorController::class, 'assign']);
 
 Route::get('/calendar', function () {
-    return view('calendar');
+    $time = Carbon::now()->format('Y-m-d');
+    return view('calendar')->with('time',$time);
 });
+
+Route::get('/student-profile/{user}',[App\Http\Controllers\ProfileController::class,'showStudentProfile']);
+
+Route::get('/student-course/{user}',[App\Http\Controllers\StudentCourseController::class,'showCourse']);
+
+Route::get('/student-module/{module}',[App\Http\Controllers\StudentCourseController::class,'showModule']);

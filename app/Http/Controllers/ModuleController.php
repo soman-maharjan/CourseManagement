@@ -49,6 +49,7 @@ class ModuleController extends Controller
             'title' => 'required',
             'description' => 'required',
             'start_date' => 'required',
+            'module_code' => 'required',
             'end_date' => 'required',
             'credit_score' => 'required',
             'module_leader' => 'nullable'
@@ -59,6 +60,7 @@ class ModuleController extends Controller
         $module->description = request()->input('description');
         $module->start_date = request()->input('start_date');
         $module->end_date = request()->input('end_date');
+        $module->module_code = request()->input('module_code');      
         $module->credit_score = request()->input('credit_score');
         $module->module_leader = request()->input('module_leader');
 
@@ -116,6 +118,7 @@ class ModuleController extends Controller
             'description' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'module_code' => 'required',
             'credit_score' => 'required',
             'module_leader' => 'nullable'
             ]);
@@ -124,6 +127,7 @@ class ModuleController extends Controller
         $module->description = request()->input('description');
         $module->start_date = request()->input('start_date');
         $module->end_date = request()->input('end_date');
+        $module->module_code = request()->input('module_code');      
         $module->credit_score = request()->input('credit_score');
         $module->module_leader = request()->input('module_leader');
 

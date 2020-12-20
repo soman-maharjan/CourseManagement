@@ -18,7 +18,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        $attendances = Attendance::all();
+        $attendances = Attendance::paginate(10);
         return view('attendance.index',[
             'attendances' => $attendances
         ]);

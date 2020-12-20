@@ -17,8 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        dd(User::find(auth()->id()));
-        $courses = Course::all();
+        $courses = Course::paginate(10);
         return view('course.index',[
             'courses' => $courses
         ]);

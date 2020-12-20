@@ -10,7 +10,7 @@
 </div>
 
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Module</th>
@@ -27,9 +27,9 @@
             <td>{{$attendance->module->title}}</td>
             <td>
                 @if((int)$attendance->status)
-                    <span class="alert alert-success">Present</span> 
+                <span class="alert alert-success">Present</span>
                 @else
-                    <span class="alert alert-danger">Absent</span>
+                <span class="alert alert-danger">Absent</span>
                 @endif
             </td>
             <td>{{$attendance->attendance_date}}</td>
@@ -49,5 +49,7 @@
         @endif
     </tbody>
 </table>
-
+<div class="d-flex justify-content-center">
+    {{$attendances->links()}}
+</div>
 @endsection

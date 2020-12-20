@@ -13,7 +13,7 @@ class StaffController extends Controller
 
     public function index()
     {
-        $staffs = Staff::all();
+        $staffs = Staff::paginate(10);
         return view('staff.index',[
             'staffs' => $staffs
         ]);

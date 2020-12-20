@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('staff')->insert([
             'first_name' => 'Staff',
-            'last_name' => 'Staff',
+            'last_name' => 'Test',
             'gender' => 'M',
             'date_of_birth' => Carbon::now()->format('Y-m-d H:i:s'),
             'email' => 'staff@staff.com',
