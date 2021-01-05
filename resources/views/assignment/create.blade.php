@@ -29,7 +29,7 @@
   </div>
     <div class="form-group">
       <label for="assignment_file">File</label>
-      <input type="file" class="form-control" id="assignment_file" placeholder="Credit Score" name="assignment_file"
+      <input type="file" class="form-control" id="assignment_file" name="assignment_file"
         value="{{old('assignment_file')}}">
       @error('assignment_file')
       <p style="color: red">{{ $message }}</p>
@@ -37,7 +37,7 @@
     </div>
   <div class="form-group">
     <label for="module_id">Select Module</label><br>
-    <select size="3" class="module_id" name="module_id">
+    <select class="module_id form-control" name="module_id">
       @foreach($modules as $module)
       <option value="{{$module->id}}">{{$module->title}}</option>
       @endforeach

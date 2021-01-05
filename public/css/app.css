@@ -2118,7 +2118,8 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(1.6em + 0.75rem + 2px);
+  /* Removed height for file submission*/
+  /* height: calc(1.6em + 0.75rem + 2px); */
   padding: 0.375rem 0.75rem;
   font-size: 0.9rem;
   font-weight: 400;
@@ -11172,5 +11173,21 @@ body{
   border:1px solid grey;
 }
 .about-module{
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.student-nav{
+  background: white;
+  margin-right: 20px;
+  padding-left: 22px;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+  
+.assignment-card{
+  margin-bottom:15px;
+}
+.card-hr-upper{
+  margin-top: 0px !important;
+}
+.card-hr-bottom{
+  margin-bottom: 0px !important;
 }

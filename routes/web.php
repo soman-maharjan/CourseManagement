@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Carbon;
 use App\Models\User;
+use App\Models\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +47,23 @@ Route::get('/calendar', function () {
     return view('calendar')->with('time',$time);
 });
 
-Route::get('/student-profile/{user}',[App\Http\Controllers\ProfileController::class,'showStudentProfile']);
+Route::get('/student/profile/{user}',[App\Http\Controllers\ProfileController::class,'showStudentProfile']);
 
-Route::get('/student-course/{user}',[App\Http\Controllers\StudentCourseController::class,'showCourse']);
+Route::get('/student/course/{user}',[App\Http\Controllers\StudentCourseController::class,'showCourse']);
 
-Route::get('/student-module/{module}',[App\Http\Controllers\StudentCourseController::class,'showModule']);
+Route::get('/student-module/{module}',[App\Http\Controllers\StudentCourseController::class,'showCourseModule']);
+
+Route::get('/student-module-assignment/{module}',[App\Http\Controllers\StudentCourseController::class,'showModuleAssignment']);
+
+Route::get('/student/assignment/{user}',[App\Http\Controllers\StudentAssignmentController::class,'showAssignment']);
+
+Route::get('/student-tutor/{user}',function(User $user){
+    $student = Student::where('email',$user->email)->first();
+    return view('student-tutor',[
+        'student' => $student
+    ]);
+});
+
+Route::get('/assignment-submit/{user}',[App\Http\Controllers\ReportController::class,'index']);
+
+Route::post('/assignment-submit',[App\Http\Controllers\StudentAssignmentController::class,'store']);

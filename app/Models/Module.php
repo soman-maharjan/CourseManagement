@@ -20,7 +20,7 @@ class Module extends Model
     }
 
     public function assignment(){
-        return $this->belongsTo(Assignment::class);
+        return $this->hasMany(Assignment::class);
     }
 
     public function student_attendance(){

@@ -16,8 +16,13 @@ class StudentCourseController extends Controller
         'student' => $student,
         ]);
     }
-    public function showModule(Module $module){
+    public function showCourseModule(Module $module){
         return view('student-module',[
+            'module' => $module
+        ]);
+    }
+    public function showModuleAssignment(Module $module){
+        return view('module-assignment',[
             'module' => $module
         ]);
     }
