@@ -11191,3 +11191,6 @@ body{
 .card-hr-bottom{
   margin-bottom: 0px !important;
 }
+.attendance-status{
+  line-height: 2;
+}

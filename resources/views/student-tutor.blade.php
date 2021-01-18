@@ -67,6 +67,7 @@
             </div>
           </div>
         </div>
+      </div>
         <div class="card">
             <div class="card-header text-white bg-primary">
               <h5>Contact Your Personal Tutor Through : {{$student->staff->email}}</h5> 

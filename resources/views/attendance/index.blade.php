@@ -27,9 +27,9 @@
             <td>{{$attendance->module->title}}</td>
             <td>
                 @if((int)$attendance->status)
-                <span class="alert alert-success">Present</span>
+                <span class="alert alert-success attendance-status">Present</span>
                 @else
-                <span class="alert alert-danger">Absent</span>
+                <span class="alert alert-danger attendance-status">Absent</span>
                 @endif
             </td>
             <td>{{$attendance->attendance_date}}</td>

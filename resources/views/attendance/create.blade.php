@@ -32,9 +32,9 @@
         <div class="form-group">
             <label for="status">Status</label> <br>
                 Present
-                <input type="checkbox" name="status" value="1">
+                <input type="radio" name="status" value="1">
                 Absent
-                <input type="checkbox" name="status" value="1">
+                <input type="radio" name="status" value="0">
             @error('status')
             <p style="color: red">{{ $message }}</p>
             @enderror

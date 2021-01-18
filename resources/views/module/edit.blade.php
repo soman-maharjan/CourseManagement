@@ -33,7 +33,7 @@
         <label for="module_leader">Module Leader</label>
         <select class="form-control" name="module_leader">
             @foreach ($staffs as $staff)
-            <option value="{{ $staff->id }}">
+            <option value="{{ $staff->id }}" >
                 {{ $staff->first_name }} {{ $staff->last_name }}
             </option>
             @endforeach
@@ -55,7 +55,7 @@
     </div>
     <div class="form-group">
         <label for="module_code">Module Code</label>
-        <input type="text" class="form-control" id="module_code" name="module_code" value="{{old('module_code')}}">
+        <input type="text" class="form-control" id="module_code" name="module_code" value="{{$module->module_code}}">
         @error('module_code')
         <p style="color: red">{{ $message }}</p>
         @enderror
