@@ -11,102 +11,61 @@ use App\Models\AttendanceReport;
 
 class AttendanceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $attendances = Attendance::paginate(10);
-        return view('attendance.index',[
+        return view('attendance.index', [
             'attendances' => $attendances
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $students = Student::all();
         $modules = Module::all();
 
-        return view('attendance.create',[
+        return view('attendance.create', [
             'students' => $students,
             'modules' => $modules
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         Attendance::create(request()->validate([
             'module_id' => 'required',
-            'student_id' => 'required',            
+            'student_id' => 'required',
             'status' => 'required',
             'attendance_date' => 'required',
         ]));
         return redirect('/attendance');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Attendance  $attendance
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Attendance $attendance)
+    public function report(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Attendance  $attendance
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Attendance $attendance)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Attendance  $attendance
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Attendance $attendance)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Attendance  $attendance
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Attendance $attendance)
-    {
-        //
-    }
-
-    public function report(Request $request){
         AttendanceReport::create(request()->validate([
-            'student_id' => 'required'
+            'student_id' => 'required',
+            'module_id' => 'required'
         ]));
-        return redirect('/attendance')->with('alert','Student Reported!');
+        return redirect('/attendance')->with('alert', 'Student Reported!');
+    }
+
+    public function search(Request $request)
+    {
+        $error = null;
+        $studentRecord = null;
+        $student = Student::where('first_name', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+            ->first();
+        if ($student == null) {
+            $error = "Student Not Found!";
+        } else {
+            $studentRecord = $student->attendance;
+        }
+        return view('search.student-attendance', [
+            'studentRecord' => $studentRecord,
+            'error' => $error
+        ]);
     }
 }
-

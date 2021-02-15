@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Student;
@@ -16,6 +17,7 @@ class StudentAssignmentController extends Controller
         'student' => $student,
         ]);
     }
+
     public function store(Request $request){
         request()->validate([
             'student_assignment' => 'required',
@@ -45,9 +47,11 @@ class StudentAssignmentController extends Controller
         $assignment->student_id = request()->input('student_id');
         $assignment->title = request()->input('title');
         $assignment->description = request()->input('description');
+        $assignment->assignment_id = $request->assignment_id;
 
         $assignment->save();
 
-        return redirect('/assignment-submit/'.auth()->id());
+        return redirect('/assignment-submit/'.auth()->id())->with('alert','Assignment Submitted!');
     }
+    
 }

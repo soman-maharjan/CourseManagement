@@ -15,7 +15,7 @@
     @foreach($module->assignment as $assignment)
     <div class="card assignment-card">
 
-        <h5 class="card-header">{{$assignment->title}}</h5>
+        <h5 class="card-header">{{$assignment->title}} ( {{$assignment->module->title}} )</h5>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-6">

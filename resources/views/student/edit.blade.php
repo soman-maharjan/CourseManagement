@@ -43,6 +43,14 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="student_id">Student Id</label>
+        <input type="text" class="form-control" id="student_id" placeholder="20416264" name="student_id"
+        value="{{$student->date_joined}}">
+        @error('student_id')
+        <p style="color: red">{{ $message }}</p>
+        @enderror
+    </div>
+    <div class="form-group">
         <label for="date_joined">Date Joined</label>
         <input type="date" class="form-control" id="date_joined" placeholder="2020-12-9" name="date_joined"
             value="{{$student->date_joined}}">

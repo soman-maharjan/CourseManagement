@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->char('gender');
+            $table->string('student_id');
             $table->date('date_of_birth');
             $table->date('date_joined');
             $table->string('email')->unique();

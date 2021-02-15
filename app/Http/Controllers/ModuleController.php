@@ -65,7 +65,7 @@ class ModuleController extends Controller
         $module->module_leader = request()->input('module_leader');
 
         $module->save();
-        
+
         $course = Course::find(request()->input('course_id'));
         $module->course()->sync($course);
 

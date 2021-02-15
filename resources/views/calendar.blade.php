@@ -3,11 +3,11 @@
 
 <div class="container ">
   <!-- Calendar -->
-  <div class="calendar shadow bg-white p-5">
-    <div class="d-flex align-items-center"><i class="fa fa-calendar fa-3x mr-3"></i>
+  <div class="calendar shadow bg-white p-5" style="padding-bottom: 5px !important">
+    <div class="d-flex align-items-center"><i class="fa fa-calendar fa-2x mr-3"></i>
       <h2 class="month font-weight-bold mb-0 text-uppercase">{{$time}}</h2>
     </div>
-    <p class="font-italic text-muted mb-5">No events for this day.</p>
+    <p class="font-italic text-muted mb-2">No events for this day.</p>
     <ol class="day-names list-unstyled">
       <li class="font-weight-bold text-uppercase">Sun</li>
       <li class="font-weight-bold text-uppercase">Mon</li>

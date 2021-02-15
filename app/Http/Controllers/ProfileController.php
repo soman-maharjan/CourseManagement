@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Staff;
 
 use Illuminate\Http\Request;
 
@@ -13,6 +14,13 @@ class ProfileController extends Controller
         return view('student-profile',[
         'user' => $user,
         'student' => $student,
+        ]);
+    }
+    public function showStaffProfile(User $user){
+        $staff = Staff::where('email',$user->email)->first();
+        return view('staff-profile',[
+        'user' => $user,
+        'staff' => $staff,
         ]);
     }
 }

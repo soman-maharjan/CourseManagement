@@ -18,7 +18,7 @@ use App\Models\Student;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -49,6 +49,8 @@ Route::get('/calendar', function () {
 
 Route::get('/student/profile/{user}',[App\Http\Controllers\ProfileController::class,'showStudentProfile']);
 
+Route::get('/staff/profile/{user}',[App\Http\Controllers\ProfileController::class,'showStaffProfile']);
+
 Route::get('/student/course/{user}',[App\Http\Controllers\StudentCourseController::class,'showCourse']);
 
 Route::get('/student-module/{module}',[App\Http\Controllers\StudentCourseController::class,'showCourseModule']);
@@ -64,6 +66,19 @@ Route::get('/student-tutor/{user}',function(User $user){
     ]);
 });
 
+// Submit assignment 
 Route::get('/assignment-submit/{user}',[App\Http\Controllers\ReportController::class,'index']);
 
 Route::post('/assignment-submit',[App\Http\Controllers\StudentAssignmentController::class,'store']);
+
+Route::get('/list-assignment',[App\Http\Controllers\StudentAssignmentController::class,'displayAssignment']);
+
+//grading assignments for staff
+Route::get('/grade',[App\Http\Controllers\ReportController::class,'grade']);
+Route::post('/grade',[App\Http\Controllers\ReportController::class,'store']);
+
+Route::get('/tutee',[App\Http\Controllers\StaffController::class,'tutee']);
+
+Route::resource('/note',\App\Http\Controllers\NoteController::class);
+
+Route::post('/search-student-attendance', [App\Http\Controllers\AttendanceController::class,'search']);

@@ -91,4 +91,11 @@ class StaffController extends Controller
         $staff->delete();
         return redirect('/staff');
     }
+
+    public function tutee(){
+        $staff = Staff::where('email',auth()->user()->email)->first(); 
+        return view('Staff.tutee',[
+            'students' => $staff->student
+        ]);
+    }
 }

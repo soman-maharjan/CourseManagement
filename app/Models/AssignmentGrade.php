@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Assignment extends Model
+class AssignmentGrade extends Model
 {
     use HasFactory;
 
-    public function module(){
-        return $this->belongsTo(Module::class);
-    }
+    protected $table = 'assignment_grade';
 
     public function report(){
         return $this->hasOne(Report::class);

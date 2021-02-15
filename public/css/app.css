@@ -11052,7 +11052,7 @@ Calendar Styling */
 
 @media (min-width: 992px) {
   .month {
-    font-size: 3.5rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -11072,7 +11072,7 @@ Calendar Styling */
 
 .calendar .days li {
   border-bottom: 1px solid #eee;
-  min-height: 8rem;
+  min-height: 6rem;
 }
 
 .calendar .days li .date {
@@ -11169,8 +11169,8 @@ body{
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
 }
 .module-border{
-  border-left: 6px solid black !important; 
-  border:1px solid grey;
+  border-left: 6px solid #384aeb !important; 
+  border: none;
 }
 .about-module{
   box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -11194,3 +11194,18 @@ body{
 .attendance-status{
   line-height: 2;
 }
+
+.note-delete-button{
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+/* 
+.note-button{
+  border: 1px solid black;
+  transition-duration: 1s;
+}
+
+.note-button:hover{
+  background-color: red;
+} */

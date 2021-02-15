@@ -10,7 +10,7 @@
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
             <th scope="col">Course</th>
-            <th scope="col">Mobile Number</th>
+            <th scope="col">Student Id</th>
             <th scope="col">Address</th>
             <th scope="col">Options</th>
 
@@ -24,7 +24,7 @@
             <td>{{$student->last_name}}</td>
             <td>{{$student->email}}</td>
             <td>{{$student->course->title}}</td>
-            <td>{{$student->mobile_number}}</td>
+            <td>{{$student->student_id}}</td>
             <td>{{$student->address}}</td>
             <td style="display: inline-flex">
                 <a href="/student/{{$student->id}}/edit"><button class="btn btn-primary icon-button">

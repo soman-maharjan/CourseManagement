@@ -23,9 +23,10 @@ class Module extends Model
         return $this->hasMany(Assignment::class);
     }
 
-    public function student_attendance(){
-        return $this->belongsToMany(Attendance::class, 'attendances', 'module_id', 'student_id')->withPivot('status', 'attendance_date');
+    public function report(){
+        return $this->hasMany(Report::class);
     }
+
 }
 
 
