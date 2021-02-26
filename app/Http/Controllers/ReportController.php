@@ -13,7 +13,7 @@ class ReportController extends Controller
 {
     public function index(User $user){
         $student = Student::where('email',$user->email)->first();
-        return view('submit-assignment',[
+        return view('StudentAssignment.submit-assignment',[
             'student' => $student
         ]);
     }

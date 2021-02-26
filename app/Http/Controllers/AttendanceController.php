@@ -38,7 +38,7 @@ class AttendanceController extends Controller
             'status' => 'required',
             'attendance_date' => 'required',
         ]));
-        return redirect('/attendance');
+        return redirect('/attendance')->with('success-alert', 'Student Reported!');
     }
 
     public function report(Request $request)
@@ -47,7 +47,7 @@ class AttendanceController extends Controller
             'student_id' => 'required',
             'module_id' => 'required'
         ]));
-        return redirect('/attendance')->with('alert', 'Student Reported!');
+        return redirect('/attendance')->with('report-alert', 'Student Reported!');
     }
 
     public function search(Request $request)

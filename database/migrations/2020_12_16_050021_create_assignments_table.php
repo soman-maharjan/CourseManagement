@@ -19,6 +19,7 @@ class CreateAssignmentsTable extends Migration
             $table->string('description');
             $table->string('assignment_file')->nullable();
             $table->date('submission_date')->nullable();
+            $table->boolean('is_archieved')->default(0);
             $table->unsignedBigInteger('module_id');
             $table->timestamps();
         });

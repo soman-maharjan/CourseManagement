@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Create Assignment</h2>
+<h3 style="text-align: center">EDIT ASSIGNMENT</h3><br>
 <form method="POST" action="/assignment/{{$assignment->id}}" enctype="multipart/form-data">
     @method('PUT')
     @csrf

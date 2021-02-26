@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Create Assignment</h2>
+<h3 style="text-align: center">ENTER ASSIGNMENT DETAILS</h3><br>
 <form method="POST" action="/assignment" enctype="multipart/form-data">
   @csrf
     <div class="form-group">
@@ -13,7 +13,7 @@
     </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" placeholder="About Course"
+    <textarea class="form-control" id="description" placeholder="About Assignment"
       name="description">{{old('description')}}</textarea>
     @error('description')
     <p style="color: red">{{ $message }}</p>

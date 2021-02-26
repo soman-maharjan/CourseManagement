@@ -13,7 +13,7 @@ class StaffController extends Controller
 
     public function index()
     {
-        $staffs = Staff::paginate(10);
+        $staffs = Staff::where('is_archieved',0)->paginate(10);
         return view('staff.index',[
             'staffs' => $staffs
         ]);
@@ -49,7 +49,7 @@ class StaffController extends Controller
         
         User::where('email', request()->input('email'))->update(['role_id' => 1]);
 
-        return redirect('/staff');
+        return redirect('/staff')->with('success-alert','Staff Record Added!');
     }
 
     public function show(Staff $staff)
@@ -82,14 +82,14 @@ class StaffController extends Controller
             'address' => 'nullable'
         ]));
 
-        return redirect('/staff');
+        return redirect('/staff')->with('update-alert','Staff Record Updated!');
     }
 
     public function destroy(Staff $staff)
     {
         User::where('email',$staff->email)->delete();
         $staff->delete();
-        return redirect('/staff');
+        return redirect('/staff')->with('delete-alert','Staff Record Deleted!');
     }
 
     public function tutee(){
@@ -97,5 +97,27 @@ class StaffController extends Controller
         return view('Staff.tutee',[
             'students' => $staff->student
         ]);
+    }
+
+    public function archive(Staff $staff){
+        $staff->update([
+            'is_archieved' => 1
+        ]);
+        return redirect('/staff')->with('archive-alert','Staff Record Archieved!');
+    }
+
+    public function showArchivedData()
+    {
+        $staffs = Staff::where('is_archieved',1)->paginate(10);
+        return view('staff.archive',[
+            'staffs' => $staffs
+        ]);
+    }
+
+    public function unarchive(Staff $staff){
+        $staff->update([
+            'is_archieved' => 0
+        ]);
+        return redirect('/staff/archive')->with('archive-alert','Staff Record Restored!');
     }
 }

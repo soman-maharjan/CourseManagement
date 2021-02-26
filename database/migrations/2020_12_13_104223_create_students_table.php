@@ -25,6 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('email')->unique();
             $table->string('mobile_number')->unique();
             $table->string('address');
+            $table->boolean('is_archieved')->default(0);
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('pat_id')->nullable();
             $table->timestamps();

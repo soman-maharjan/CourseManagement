@@ -16,7 +16,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::all();
+        $modules = Module::where('is_archieved',0)->paginate(10);
         return view('module.index',[
             'modules' => $modules
         ]);
@@ -69,7 +69,7 @@ class ModuleController extends Controller
         $course = Course::find(request()->input('course_id'));
         $module->course()->sync($course);
 
-        return redirect('/module');
+        return redirect('/module')->with('success-alert','Module Added!');
     }
 
     /**
@@ -136,7 +136,7 @@ class ModuleController extends Controller
         $course = Course::find(request()->input('course_id'));
         $module->course()->sync($course);
 
-        return redirect('/module');
+        return redirect('/module')->with('update-alert','Module Updated!');
     }
 
     /**
@@ -148,7 +148,29 @@ class ModuleController extends Controller
     public function destroy(Module $module)
     {
         $module->delete();
-        return redirect('/module');
+        return redirect('/module')->with('delete-alert','Module Removed!');
 
+    }
+
+    public function archive(Module $module){
+        $module->update([
+            'is_archieved' => 1
+        ]);
+        return redirect('/module')->with('archive-alert','Module Record Archieved!');
+    }
+
+    public function showArchivedData()
+    {
+        $modules = Module::where('is_archieved',1)->paginate(10);
+        return view('module.archive',[
+            'modules' => $modules
+        ]);
+    }
+
+    public function unarchive(Module $module){
+        $module->update([
+            'is_archieved' => 0
+        ]);
+        return redirect('/module/archive')->with('archive-alert','Module Record Restored!');
     }
 }

@@ -25,7 +25,7 @@
         @endforeach
         @else
         <tr>
-            <td colspan="4" class="text-center">No records found</td>
+            <td colspan="5" class="text-center">Student has not been assigned!</td>
         </tr>
         @endif
     </tbody>

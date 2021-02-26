@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Edit Course</h2>
+<h3 style="text-align: center">EDIT COURSE RECORD</h3><br>
 <form method="POST" action="/course/{{$course->id}}">
   @method('PUT')
   @csrf

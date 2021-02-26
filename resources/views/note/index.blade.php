@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @if(Session::has('alert'))
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success fade-message" role="alert">
     {{Session::get('alert')}}
 </div>
 @endif
@@ -19,14 +19,14 @@
                 <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
                     <div class="card-body">
                         <a href="/note/{{ $note->id }}">
-                            <h5 class="card-title">{{ $note->title }}</h5></a>
+                            <h5 class="card-title note-title">{!! Str::limit($note->title, 20) !!}</h5></a>
                             <p class="card-text">{!! Str::limit($note->note, 110) !!}</p>
                             <div style="display: flex">
                                 <a href="/note/{{ $note->id }}" class=""><button class="btn"></button></a>
                                 <form action="/note/{{ $note->id }}" method="POST" class="note-delete-button card-link">
                                     <input type="hidden" name="_method" value="delete" />
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <button class="btn"><i class="fa fa-trash fa-2x" style="color: red"></i></button>
+                                    <button class="btn action_button"><i class="far fa-trash-alt fa-2x" style="color: red"></i></button>
                                 </form>
                             </div>
                     </div>

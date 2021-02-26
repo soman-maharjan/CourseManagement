@@ -17,7 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::paginate(10);
+        $courses = Course::where('is_archieved',0)->paginate(10);
         return view('course.index',[
             'courses' => $courses
         ]);
@@ -72,7 +72,7 @@ class CourseController extends Controller
         $module = Module::find(request()->input('module_id'));
         $course->module()->sync($module);
 
-        return redirect('/course');
+        return redirect('/course')->with('success-alert','Course Added!');
     }
     /**
      * Display the specified resource.
@@ -142,7 +142,7 @@ class CourseController extends Controller
         $module = Module::find(request()->input('module_id'));
         $course->module()->sync($module);
 
-        return redirect('/course');
+        return redirect('/course')->with('update-alert','Course Updated!');
     }
 
     /**
@@ -155,6 +155,28 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $course->delete();
-        return redirect('/course');
+        return redirect('/course')->with('delete-alert','Course Removed!');
+    }
+
+    public function archive(Course $course){
+        $course->update([
+            'is_archieved' => 1
+        ]);
+        return redirect('/course')->with('archive-alert','Course Record Archieved!');
+    }
+
+    public function showArchivedData()
+    {
+        $courses = Course::where('is_archieved',1)->paginate(10);
+        return view('course.archive',[
+            'courses' => $courses
+        ]);
+    }
+
+    public function unarchive(Course $course){
+        $course->update([
+            'is_archieved' => 0
+        ]);
+        return redirect('/course/archive')->with('archive-alert','Course Record Restored!');
     }
 }

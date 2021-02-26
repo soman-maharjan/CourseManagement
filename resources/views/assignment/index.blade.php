@@ -1,5 +1,28 @@
 @extends('layouts.app')
 @section('content')
+@if(Session::has('success-alert'))
+<div class="alert alert-success fade-message" role="alert">
+    {{Session::get('success-alert')}}
+</div>
+@endif
+@if(Session::has('delete-alert'))
+<div class="alert alert-danger fade-message" role="alert">
+    {{Session::get('delete-alert')}}
+</div>
+@endif
+@if(Session::has('update-alert'))
+<div class="alert alert-primary fade-message" role="alert">
+    {{Session::get('update-alert')}}
+</div>
+@endif
+@if(Session::has('archive-alert'))
+<div class="alert alert-dark fade-message" role="alert">
+    {{Session::get('archive-alert')}}
+</div>
+@endif
+<div>
+    <a href="/assignment/archive"><button class="btn btn-dark create-button">View Archieved Records</button></a>
+  </div>
 <div >
     <a href="/assignment/create"><button class="btn btn-success create-button">Create a new Record</button></a>
 </div>
@@ -25,22 +48,27 @@
             <td>{{  \Illuminate\Support\Str::limit($assignment->assignment_file, 20) }}</td>
             <td>{{$assignment->submission_date}}</td>
             <td style="display: inline-flex">
-                <a href="/assignment/{{$assignment->id}}/edit"><button class="btn btn-primary icon-button">
-                        <img src="{{ asset('icons/edit.png') }}" class="edit-icon">
-                    </button>
-                </a>
+                <a href="/assignment/{{ $assignment->id }}/edit"><button class="btn action_button">
+                    <i class="far fa-2x fa-edit" style="color: #2B60DE"></i>
+                </button>
+                  </a>
 
-                <form action="/assignment/{{$assignment->id}}" method="POST">
-                    <input type="hidden" name="_method" value="delete" />
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <button class="btn btn-danger icon-button"><img src="{{ asset('icons/remove.png') }}"
-                            class="edit-icon"></button>
-                </form>
+                  <form action="/assignment/{{ $assignment->id }}" method="POST">
+                      <input type="hidden" name="_method" value="delete" />
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <button class="btn action_button action_button_margin"><i class="far fa-trash-alt fa-2x"
+                        style="color: red"></i></button>
+                  </form>
 
-                <a href="/assignment/{{$assignment->id}}"><button class="btn btn-success icon-button">
-                        <img src="{{ asset('icons/show.png') }}" class="edit-icon">
-                    </button>
-
+                  <a href="/assignment/{{ $assignment->id }}"><button class="btn action_button action_button_margin">
+                    <i class="far fa-2x fa-eye" style="color: limegreen"></i>
+                </button>
+                  </a>
+                  <a href="/assignment/archive/{{ $assignment->id }}"><button
+                    class="btn action_button action_button_margin">
+                    <i class="far fa-file-archive fa-2x" style="color: black"></i>
+                </button>
+            </a>
             </td>
         </tr>
         @endforeach

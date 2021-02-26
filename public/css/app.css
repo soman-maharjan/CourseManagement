@@ -10947,7 +10947,7 @@ a.text-dark:focus {
 }
 .icon-button{
   margin: 4px;
-  margin-top: -4px;
+  /* margin-top: -4px; */
 }
 .college-logo{
   height: 60px;
@@ -11209,3 +11209,25 @@ body{
 .note-button:hover{
   background-color: red;
 } */
+
+
+.action_button_margin{
+  margin-top: -2px;
+}
+
+.action_button:focus{
+  box-shadow: none !important;
+}
+
+.action_button{
+  padding: 2px 4px !important;
+}
+
+.fa-2x{
+  font-size: 1.6rem !important;
+}
+
+.note-title{
+  background-color: aliceblue;
+  padding: 5px;
+}

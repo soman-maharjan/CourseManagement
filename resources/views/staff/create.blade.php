@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Create Staff Records</h2>
+<h3 style="text-align: center">ENTER STAFF DETAILS</h3><br>
 <form method="POST" action="/staff">
     @csrf
     <div class="form-row">

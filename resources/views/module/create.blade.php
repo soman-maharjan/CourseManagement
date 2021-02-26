@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Create Module Records</h2>
+<h3 style="text-align: center">ENTER MODULE DETAILS</h3><br>
 <form method="POST" action="/module">
     @csrf
     <div class="form-group">

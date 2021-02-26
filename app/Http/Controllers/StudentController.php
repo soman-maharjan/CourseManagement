@@ -19,7 +19,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::paginate(10);
+        $students = Student::where('is_archieved',0)->paginate(10);
         return view('student.index',[
             'students' => $students
         ]);
@@ -67,7 +67,7 @@ class StudentController extends Controller
         ]);
         User::where('email', request()->input('email'))->update(['role_id' => 2]);
 
-        return redirect('/student');
+        return redirect('/student')->with('success-alert','Student Added!');
     }
 
     /**
@@ -121,7 +121,7 @@ class StudentController extends Controller
             'address' => 'required'
         ]));
 
-        return redirect('/student');
+        return redirect('/student')->with('update-alert','Student Record Updated!');
     }
 
     /**
@@ -134,6 +134,28 @@ class StudentController extends Controller
     {
         User::where('email',$student->email)->delete();
         $student->delete();
-        return redirect('/student');
+        return redirect('/student')->with('delete-alert','Student Record Removed!');
+    }
+
+    public function archive(Student $student){
+        $student->update([
+            'is_archieved' => 1
+        ]);
+        return redirect('/student')->with('archive-alert','Student Record Archieved!');
+    }
+
+    public function showArchivedData()
+    {
+        $students = Student::where('is_archieved',1)->paginate(10);
+        return view('student.archive',[
+            'students' => $students
+        ]);
+    }
+
+    public function unarchive(Student $student){
+        $student->update([
+            'is_archieved' => 0
+        ]);
+        return redirect('/student/archive')->with('archive-alert','Student Record Restored!');
     }
 }

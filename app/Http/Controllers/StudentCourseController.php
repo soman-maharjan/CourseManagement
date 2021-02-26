@@ -11,18 +11,18 @@ class StudentCourseController extends Controller
 {
     public function showCourse(User $user){
         $student = Student::where('email',$user->email)->first();
-        return view('student-course',[
+        return view('studentCourse.student-course',[
         'user' => $user,
         'student' => $student,
         ]);
     }
     public function showCourseModule(Module $module){
-        return view('student-module',[
+        return view('studentCourse.student-module',[
             'module' => $module
         ]);
     }
     public function showModuleAssignment(Module $module){
-        return view('module-assignment',[
+        return view('studentCourse.module-assignment',[
             'module' => $module
         ]);
     }

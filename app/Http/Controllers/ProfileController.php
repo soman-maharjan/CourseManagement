@@ -11,14 +11,14 @@ class ProfileController extends Controller
 {
     public function showStudentProfile(User $user){
         $student = Student::where('email',$user->email)->first();
-        return view('student-profile',[
+        return view('profile.student-profile',[
         'user' => $user,
         'student' => $student,
         ]);
     }
     public function showStaffProfile(User $user){
         $staff = Staff::where('email',$user->email)->first();
-        return view('staff-profile',[
+        return view('profile.staff-profile',[
         'user' => $user,
         'staff' => $staff,
         ]);

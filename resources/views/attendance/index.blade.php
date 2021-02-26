@@ -1,10 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    @if (Session::has('alert'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('alert') }}
+    @if (Session::has('success-alert'))
+        <div class="alert alert-success fade-message" role="alert">
+            {{ Session::get('success-alert') }}
         </div>
     @endif
+    @if (Session::has('report-alert'))
+    <div class="alert alert-danger fade-message" role="alert">
+        {{ Session::get('report-alert') }}
+    </div>
+@endif
     <div>
         <form class="form-inline my-2 my-lg-0" style="display:inline" action="/search-student-attendance" method="POST">
             @csrf

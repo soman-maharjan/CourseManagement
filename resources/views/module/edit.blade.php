@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Create Module Records</h2>
+<h3 style="text-align: center">EDIT MODULE RECORD</h3>
 <form method="POST" action="/module/{{$module->id}}">
     @method('PUT')
     @csrf

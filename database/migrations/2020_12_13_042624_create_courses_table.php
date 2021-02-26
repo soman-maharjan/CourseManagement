@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->integer('semester');
             $table->string('description');
             $table->integer('credit_score');
+            $table->boolean('is_archieved')->default(0);
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('cost');

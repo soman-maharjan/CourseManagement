@@ -17,14 +17,14 @@ class PersonalTutorController extends Controller
     }
     public function index(){
         $staffs = Staff::all();
-        return view('personal-tutor.index',[
+        return view('personalTutor.index',[
             'staffs' => $staffs
         ]);
     }
     public function create(){
         $staffs = Staff::all();
         $students = Student::all();
-        return view('personal-tutor.create',[
+        return view('personalTutor.create',[
             'staffs' => $staffs,
             'students' => $students
         ]);

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Create Course</h2>
+<h3 style="text-align: center">ENTER COURSE DETAILS</h3><br>
 <form method="POST" action="/course">
   @csrf
   <div class="form-row">
