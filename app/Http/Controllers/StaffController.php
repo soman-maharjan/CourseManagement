@@ -13,7 +13,7 @@ class StaffController extends Controller
 
     public function index()
     {
-        $staffs = Staff::where('is_archieved',0)->paginate(10);
+        $staffs = Staff::where('is_archived',0)->paginate(10);
         return view('staff.index',[
             'staffs' => $staffs
         ]);
@@ -101,14 +101,14 @@ class StaffController extends Controller
 
     public function archive(Staff $staff){
         $staff->update([
-            'is_archieved' => 1
+            'is_archived' => 1
         ]);
         return redirect('/staff')->with('archive-alert','Staff Record Archieved!');
     }
 
     public function showArchivedData()
     {
-        $staffs = Staff::where('is_archieved',1)->paginate(10);
+        $staffs = Staff::where('is_archived',1)->paginate(10);
         return view('staff.archive',[
             'staffs' => $staffs
         ]);
@@ -116,7 +116,7 @@ class StaffController extends Controller
 
     public function unarchive(Staff $staff){
         $staff->update([
-            'is_archieved' => 0
+            'is_archived' => 0
         ]);
         return redirect('/staff/archive')->with('archive-alert','Staff Record Restored!');
     }

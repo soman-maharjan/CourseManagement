@@ -16,7 +16,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::where('is_archieved',0)->paginate(10);
+        $modules = Module::where('is_archived',0)->paginate(10);
         return view('module.index',[
             'modules' => $modules
         ]);
@@ -154,14 +154,14 @@ class ModuleController extends Controller
 
     public function archive(Module $module){
         $module->update([
-            'is_archieved' => 1
+            'is_archived' => 1
         ]);
         return redirect('/module')->with('archive-alert','Module Record Archieved!');
     }
 
     public function showArchivedData()
     {
-        $modules = Module::where('is_archieved',1)->paginate(10);
+        $modules = Module::where('is_archived',1)->paginate(10);
         return view('module.archive',[
             'modules' => $modules
         ]);
@@ -169,7 +169,7 @@ class ModuleController extends Controller
 
     public function unarchive(Module $module){
         $module->update([
-            'is_archieved' => 0
+            'is_archived' => 0
         ]);
         return redirect('/module/archive')->with('archive-alert','Module Record Restored!');
     }

@@ -16,7 +16,7 @@ class AssignmentController extends Controller
      */
     public function index()
     {
-        $assignments = Assignment::where('is_archieved',0)->paginate(10);
+        $assignments = Assignment::where('is_archived',0)->paginate(10);
         return view('assignment.index',[
             'assignments' => $assignments
         ]);
@@ -161,14 +161,14 @@ class AssignmentController extends Controller
 
     public function archive(Assignment $assignment){
         $assignment->update([
-            'is_archieved' => 1
+            'is_archived' => 1
         ]);
         return redirect('/assignment')->with('archive-alert','Assignment Archieved!');
     }
 
     public function showArchivedData()
     {
-        $assignments = Assignment::where('is_archieved',1)->paginate(10);
+        $assignments = Assignment::where('is_archived',1)->paginate(10);
         return view('assignment.archive',[
             'assignments' => $assignments
         ]);
@@ -176,7 +176,7 @@ class AssignmentController extends Controller
 
     public function unarchive(Assignment $assignment){
         $assignment->update([
-            'is_archieved' => 0
+            'is_archived' => 0
         ]);
         return redirect('/assignment/archive')->with('archive-alert','Assignment Restored!');
     }

@@ -19,7 +19,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::where('is_archieved',0)->paginate(10);
+        $students = Student::where('is_archived',0)->paginate(10);
         return view('student.index',[
             'students' => $students
         ]);
@@ -139,14 +139,14 @@ class StudentController extends Controller
 
     public function archive(Student $student){
         $student->update([
-            'is_archieved' => 1
+            'is_archived' => 1
         ]);
         return redirect('/student')->with('archive-alert','Student Record Archieved!');
     }
 
     public function showArchivedData()
     {
-        $students = Student::where('is_archieved',1)->paginate(10);
+        $students = Student::where('is_archived',1)->paginate(10);
         return view('student.archive',[
             'students' => $students
         ]);
@@ -154,7 +154,7 @@ class StudentController extends Controller
 
     public function unarchive(Student $student){
         $student->update([
-            'is_archieved' => 0
+            'is_archived' => 0
         ]);
         return redirect('/student/archive')->with('archive-alert','Student Record Restored!');
     }

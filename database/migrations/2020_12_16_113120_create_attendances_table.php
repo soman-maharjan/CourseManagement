@@ -19,6 +19,7 @@ class CreateAttendancesTable extends Migration
             $table->unsignedBigInteger('module_id');
             $table->boolean('status');
             $table->date('attendance_date');
+            $table->boolean('is_archived')->default(0);
             $table->timestamps();
         });
 

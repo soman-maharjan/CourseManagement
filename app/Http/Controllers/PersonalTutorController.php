@@ -29,4 +29,17 @@ class PersonalTutorController extends Controller
             'students' => $students
         ]);
     }
+    public function showStudents(){
+        $students = Student::whereNotNull('pat_id')->get();
+        return view('personalTutor.pat-student-index',[
+            'students' => $students
+        ]);
+    }
+    public function edit(Student $student){
+        $staffs = Staff::all();
+        return view('personalTutor.edit',[
+            'student' => $student,
+            'staffs' => $staffs,
+        ]);
+    }
 }

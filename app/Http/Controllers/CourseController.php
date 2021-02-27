@@ -17,7 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::where('is_archieved',0)->paginate(10);
+        $courses = Course::where('is_archived',0)->paginate(10);
         return view('course.index',[
             'courses' => $courses
         ]);
@@ -160,14 +160,14 @@ class CourseController extends Controller
 
     public function archive(Course $course){
         $course->update([
-            'is_archieved' => 1
+            'is_archived' => 1
         ]);
         return redirect('/course')->with('archive-alert','Course Record Archieved!');
     }
 
     public function showArchivedData()
     {
-        $courses = Course::where('is_archieved',1)->paginate(10);
+        $courses = Course::where('is_archived',1)->paginate(10);
         return view('course.archive',[
             'courses' => $courses
         ]);
@@ -175,7 +175,7 @@ class CourseController extends Controller
 
     public function unarchive(Course $course){
         $course->update([
-            'is_archieved' => 0
+            'is_archived' => 0
         ]);
         return redirect('/course/archive')->with('archive-alert','Course Record Restored!');
     }

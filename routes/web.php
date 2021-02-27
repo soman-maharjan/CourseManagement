@@ -47,6 +47,11 @@ Route::get('/assignment/archive', [App\Http\Controllers\AssignmentController::cl
 Route::get('/assignment/archive/{assignment}', [App\Http\Controllers\AssignmentController::class,'archive']);
 Route::get('/assignment/unarchive/{assignment}', [App\Http\Controllers\AssignmentController::class,'unarchive']);
 
+//Archive Module Record
+Route::get('/attendance/archive', [App\Http\Controllers\AttendanceController::class,'showArchivedData']);
+Route::get('/attendance/archive/{attendance}', [App\Http\Controllers\AttendanceController::class,'archive']);
+Route::get('/attendance/unarchive/{attendance}', [App\Http\Controllers\AttendanceController::class,'unarchive']);
+
 //Resource Controllers
 
 Route::resource('/course',App\Http\Controllers\CourseController::class)->middleware('auth');
@@ -60,7 +65,6 @@ Route::resource('/module',App\Http\Controllers\ModuleController::class)->middlew
 Route::resource('/assignment',App\Http\Controllers\AssignmentController::class)->middleware('auth');
 
 Route::resource('/attendance',App\Http\Controllers\AttendanceController::class)->middleware('auth');
-
 
 Route::post('/attendance/report', [App\Http\Controllers\AttendanceController::class, 'report'])->name('report');
 
@@ -108,5 +112,9 @@ Route::get('/tutee',[App\Http\Controllers\StaffController::class,'tutee']);
 Route::resource('/note',\App\Http\Controllers\NoteController::class);
 
 Route::post('/search-student-attendance', [App\Http\Controllers\AttendanceController::class,'search']);
+
+Route::get('/personal-tutor/students', [App\Http\Controllers\PersonalTutorController::class,'showStudents']);
+Route::get('/personal-tutor/{student}/edit', [App\Http\Controllers\PersonalTutorController::class,'edit']);
+
 
 

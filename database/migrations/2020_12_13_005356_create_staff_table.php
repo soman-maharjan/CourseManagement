@@ -25,7 +25,7 @@ class CreateStaffTable extends Migration
             $table->string('number')->unique();
             $table->integer('salary');
             $table->string('job_title');
-            $table->boolean('is_archieved')->default(0);
+            $table->boolean('is_archived')->default(0);
             $table->date('date_joined');
             $table->timestamps();
         });

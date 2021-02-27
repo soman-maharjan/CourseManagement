@@ -13,7 +13,7 @@ class AttendanceController extends Controller
 {
     public function index()
     {
-        $attendances = Attendance::paginate(10);
+        $attendances = Attendance::where('is_archived', 0)->paginate(10);
         return view('attendance.index', [
             'attendances' => $attendances
         ]);
@@ -39,6 +39,22 @@ class AttendanceController extends Controller
             'attendance_date' => 'required',
         ]));
         return redirect('/attendance')->with('success-alert', 'Student Reported!');
+    }
+
+    public function edit(Attendance $attendance){
+        return view('attendance.edit',[
+            'attendance' => $attendance
+        ]);
+    }
+
+    public function update(Request $request, Attendance $attendance){
+        $attendance->update(request()->validate([
+            'module_id' => 'required',
+            'student_id' => 'required',
+            'status' => 'required',
+            'attendance_date' => 'required',
+        ]));
+        return redirect('attendance')->with('update-alert','Record Updated!');
     }
 
     public function report(Request $request)
@@ -67,5 +83,26 @@ class AttendanceController extends Controller
             'studentRecord' => $studentRecord,
             'error' => $error
         ]);
+    }
+    public function archive(Attendance $attendance){
+        $attendance->update([
+            'is_archived' => 1
+        ]);
+        return redirect('/attendance')->with('archive-alert','Attendance Archieved!');
+    }
+
+    public function showArchivedData()
+    {
+        $attendances = Attendance::where('is_archived',1)->paginate(10);
+        return view('attendance.archive',[
+            'attendances' => $attendances
+        ]);
+    }
+
+    public function unarchive(Attendance $attendance){
+        $attendance->update([
+            'is_archived' => 0
+        ]);
+        return redirect('/attendance/archive')->with('archive-alert','Attendance Restored!');
     }
 }

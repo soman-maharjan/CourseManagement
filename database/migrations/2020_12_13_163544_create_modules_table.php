@@ -21,7 +21,7 @@ class CreateModulesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('credit_score');
-            $table->boolean('is_archieved')->default(0);
+            $table->boolean('is_archived')->default(0);
             $table->unsignedBigInteger('module_leader')->nullable();
             $table->timestamps();
         });

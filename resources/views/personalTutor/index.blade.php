@@ -1,14 +1,17 @@
 @extends('layouts.app')
 @section('content')
 @if(Session::has('alert'))
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success fade-message" role="alert">
     {{Session::get('alert')}}
 </div>
 @endif
 <div >
+    <a href="/personal-tutor/students"><button class="btn btn-dark create-button">View Pat Assigned Students</button></a>
+</div>
+<div >
     <a href="/personal-tutor/create"><button class="btn btn-success create-button">Assign Student to available tutor</button></a>
 </div>
-<h4>Available Tutors</h4>
+<h3 style="text-align: center">AVAILABLE TUTORS</h3><br>
 <table class="table table-hover table-striped">
     <thead class="thead-dark">
         <tr>

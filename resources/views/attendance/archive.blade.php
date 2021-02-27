@@ -20,6 +20,8 @@
             {{ Session::get('archive-alert') }}
         </div>
     @endif
+    <h4>ARCHIVED ATTENDANCE RECORDS (Click <i class="far fa-file-archive " style="color: black"></i> to unarchive.)</h4>
+    <br>
     <div>
         <form class="form-inline my-2 my-lg-0" style="display:inline" action="/search-student-attendance" method="POST">
             @csrf
@@ -27,7 +29,7 @@
                 placeholder="e.g. Soman or maharjansoman@yahoo.com" aria-label="Search" style="width: 600px">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Student</button>
         </form>
-        <a href="/attendance/archive"><button class="btn btn-dark create-button">View Archieved Records</button></a>
+        <a href="/attendance"><button class="btn btn-dark create-button">View UnArchieved Records</button></a>
         <a href="/attendance/create"><button class="btn btn-success create-button">Create a new Record</button></a>
     </div>
 
@@ -62,7 +64,7 @@
                                     <i class="far fa-2x fa-edit" style="color: #2B60DE"></i>
                                 </button>
                             </a>
-                            <a href="/attendance/archive/{{ $attendance->id }}"><button
+                            <a href="/attendance/unarchive/{{ $attendance->id }}"><button
                                     class="btn action_button action_button_margin">
                                     <i class="far fa-file-archive fa-2x" style="color: black"></i>
                                 </button>
