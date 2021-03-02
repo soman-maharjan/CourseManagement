@@ -39,5 +39,6 @@
         <a href="/personal-tutor">Personal Tutor</a>
         <a href="/calendar">Calendar</a>
         <a href="/note">Diary</a>
+        <a href="/report">Generate Report</a>
     </div>
 @endif
