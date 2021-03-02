@@ -25,13 +25,13 @@
             </div>
         </div>
         <hr>
-        <h5>Address: {{$staff->address}}</h5>
-        
+        <h5>Address: {{ $staff->address }}</h5>
+
     </div>
     <div class="shadow p-3 mb-5 bg-white rounded" style="background: white">
-        <h5>Job Title: {{$staff->job_title}}</h5>
+        <h5>Job Title: {{ $staff->job_title }}</h5>
         <hr>
-        <h5>Salary : {{$staff->salary}}</h5>
+        <h5>Salary : {{ $staff->salary }}</h5>
         <div style="display: flex">
             <a href="/staff/{{ $staff->id }}/edit"><button class="btn btn-primary" style="width:100px">Edit</button>
             </a>

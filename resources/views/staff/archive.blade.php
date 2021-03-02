@@ -20,7 +20,7 @@
             {{ Session::get('archive-alert') }}
         </div>
     @endif
-<h4>ARCHIVED STUDENT RECORDS (Click <i class="far fa-file-archive " style="color: black"></i> to unarchive.)</h4>
+    <h4>ARCHIVED STUDENT RECORDS (Click <i class="far fa-file-archive " style="color: black"></i> to unarchive.)</h4>
     <div>
         <a href="/staff"><button class="btn btn-dark create-button">View UnArchieved Records</button></a>
     </div>
@@ -48,27 +48,23 @@
                         <td>{{ $staff->number }}</td>
                         <td>{{ $staff->address }}</td>
                         <td style="display: inline-flex">
-                            <a href="/staff/{{ $staff->id }}/edit"><button class="btn action_button">
-                              <i class="far fa-2x fa-edit" style="color: #2B60DE"></i>
-                          </button>
-                            </a>
 
                             <form action="/staff/{{ $staff->id }}" method="POST">
                                 <input type="hidden" name="_method" value="delete" />
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <button class="btn action_button action_button_margin"><i class="far fa-trash-alt fa-2x"
-                                  style="color: red"></i></button>
+                                        style="color: red"></i></button>
                             </form>
 
                             <a href="/staff/{{ $staff->id }}"><button class="btn action_button action_button_margin">
-                              <i class="far fa-2x fa-eye" style="color: limegreen"></i>
-                          </button>
+                                    <i class="far fa-2x fa-eye" style="color: limegreen"></i>
+                                </button>
                             </a>
                             <a href="/staff/unarchive/{{ $staff->id }}"><button
-                              class="btn action_button action_button_margin">
-                              <i class="far fa-file-archive fa-2x" style="color: black"></i>
-                          </button>
-                      </a>
+                                    class="btn action_button action_button_margin">
+                                    <i class="far fa-file-archive fa-2x" style="color: black"></i>
+                                </button>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

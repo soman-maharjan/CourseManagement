@@ -25,16 +25,16 @@
             </div>
         </div>
         <hr>
-        <h5>Address: {{$student->address}}</h5>
-        
+        <h5>Address: {{ $student->address }}</h5>
+
     </div>
     <div class="shadow p-3 mb-5 bg-white rounded" style="background: white">
-        <h5>Course Enrolled: {{$student->course->title}}</h5>
+        <h5>Course Enrolled: {{ $student->course->title }}</h5>
         <hr>
-        @if($student->staff != null)
-        <h5>Personal Tutor : {{$student->staff->first_name}} {{$student->staff->last_name}}</h5> <br>
+        @if ($student->staff != null)
+            <h5>Personal Tutor : {{ $student->staff->first_name }} {{ $student->staff->last_name }}</h5> <br>
         @else
-        <h5>Personal Tutor : Personal Tutor has not been assigned!</h5>
+            <h5>Personal Tutor : Personal Tutor has not been assigned!</h5>
         @endif
         <div style="display: flex">
             <a href="/student/{{ $student->id }}/edit"><button class="btn btn-primary" style="width:100px">Edit</button>

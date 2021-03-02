@@ -11,13 +11,16 @@ class Staff extends Model
 
     protected $guarded = [];
 
-    public function module(){
-        return $this->hasMany(Module::class,'module_leader');
+    public function module()
+    {
+        return $this->hasMany(Module::class, 'module_leader');
     }
-    public function student(){
-        return $this->hasMany(Student::class,'pat_id');
+    public function student()
+    {
+        return $this->hasMany(Student::class, 'pat_id');
     }
-    public function course(){
-        return $this->hasMany(Course::class,'module_leader');
+    public function course()
+    {
+        return $this->hasMany(Course::class, 'module_leader');
     }
 }

@@ -17,8 +17,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::where('is_archived',0)->paginate(10);
-        return view('course.index',[
+        $courses = Course::where('is_archived', 0)->paginate(10);
+        return view('course.index', [
             'courses' => $courses
         ]);
     }
@@ -32,7 +32,7 @@ class CourseController extends Controller
     {
         $staffs = Staff::all();
         $modules = Module::all();
-        return view('course.create',[
+        return view('course.create', [
             'modules' => $modules,
             'staffs' => $staffs
         ]);
@@ -55,7 +55,7 @@ class CourseController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'course_leader' => 'nullable'
-            ]);
+        ]);
 
         $course = new Course;
         $course->title = request()->input('title');
@@ -68,11 +68,11 @@ class CourseController extends Controller
         $course->course_leader = request()->input('course_leader');
 
         $course->save();
-        
+
         $module = Module::find(request()->input('module_id'));
         $course->module()->sync($module);
 
-        return redirect('/course')->with('success-alert','Course Added!');
+        return redirect('/course')->with('success-alert', 'Course Added!');
     }
     /**
      * Display the specified resource.
@@ -83,7 +83,7 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::find($id);
-        return view('course.show',[
+        return view('course.show', [
             'course' => $course
         ]);
     }
@@ -99,11 +99,11 @@ class CourseController extends Controller
         $staffs = Staff::all();
         $course = Course::find($id);
         $modules = Module::all();
-        return view('course.edit',[
+        return view('course.edit', [
             'course' => $course,
             'modules' => $modules,
             'staffs' => $staffs
-            
+
         ]);
     }
 
@@ -126,7 +126,7 @@ class CourseController extends Controller
             'end_date' => 'required',
             'end_date' => 'nullable'
 
-            ]);
+        ]);
 
         $course->title = request()->input('title');
         $course->semester = request()->input('semester');
@@ -138,11 +138,11 @@ class CourseController extends Controller
         $course->course_leader = request()->input('course_leader');
 
         $course->save();
-        
+
         $module = Module::find(request()->input('module_id'));
         $course->module()->sync($module);
 
-        return redirect('/course')->with('update-alert','Course Updated!');
+        return redirect('/course')->with('update-alert', 'Course Updated!');
     }
 
     /**
@@ -155,28 +155,30 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $course->delete();
-        return redirect('/course')->with('delete-alert','Course Removed!');
+        return redirect('/course')->with('delete-alert', 'Course Removed!');
     }
 
-    public function archive(Course $course){
+    public function archive(Course $course)
+    {
         $course->update([
             'is_archived' => 1
         ]);
-        return redirect('/course')->with('archive-alert','Course Record Archieved!');
+        return redirect('/course')->with('archive-alert', 'Course Record Archieved!');
     }
 
     public function showArchivedData()
     {
-        $courses = Course::where('is_archived',1)->paginate(10);
-        return view('course.archive',[
+        $courses = Course::where('is_archived', 1)->paginate(10);
+        return view('course.archive', [
             'courses' => $courses
         ]);
     }
 
-    public function unarchive(Course $course){
+    public function unarchive(Course $course)
+    {
         $course->update([
             'is_archived' => 0
         ]);
-        return redirect('/course/archive')->with('archive-alert','Course Record Restored!');
+        return redirect('/course/archive')->with('archive-alert', 'Course Record Restored!');
     }
 }

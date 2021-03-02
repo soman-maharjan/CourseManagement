@@ -18,7 +18,7 @@
             @foreach ($module->report as $assignment)
                 @if ($assignment->grade == null)
                     <div class="card assignment-card">
-                        <h5 class="card-header">{{ $assignment->title }} ({{ $module->title }})</h5>
+                        <h5 class="card-header text-light bg-dark">{{ $assignment->title }} ({{ $module->title }})</h5>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -33,6 +33,7 @@
                             </div>
                             <hr class="card-hr-upper">
                             <p class="card-text">Attached file: {{ $assignment->student_assignment }}</p>
+                            <p class="card-text">Description: {{ $assignment->description }}</p>
                             <a href="/storage/assignment_file/{{ $assignment->student_assignment }}"><button
                                     class="btn btn-primary">Download
                                     Attached File</button></a>

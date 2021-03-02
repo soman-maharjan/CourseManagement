@@ -62,6 +62,12 @@
                                     <i class="far fa-2x fa-edit" style="color: #2B60DE"></i>
                                 </button>
                             </a>
+                            <form action="/attendance/{{ $attendance->id }}" method="POST">
+                                <input type="hidden" name="_method" value="delete" />
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <button class="btn action_button action_button_margin"><i class="far fa-trash-alt fa-2x"
+                                        style="color: red"></i></button>
+                            </form>
                             <a href="/attendance/archive/{{ $attendance->id }}"><button
                                     class="btn action_button action_button_margin">
                                     <i class="far fa-file-archive fa-2x" style="color: black"></i>

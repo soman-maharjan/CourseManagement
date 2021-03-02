@@ -14,8 +14,8 @@ class NoteController extends Controller
      */
     public function index()
     {
-        return view('note.index',[
-            'notes' => Note::where('user_id',auth()->user()->id)->get()
+        return view('note.index', [
+            'notes' => Note::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
@@ -43,7 +43,7 @@ class NoteController extends Controller
             'user_id' => 'nullable'
         ]);
         Note::create($validated);
-        return redirect('/note')->with('alert','Note Created!');
+        return redirect('/note')->with('alert', 'Note Created!');
     }
 
     /**
@@ -54,7 +54,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        return view('note.show',[
+        return view('note.show', [
             'note' => $note
         ]);
     }
@@ -67,7 +67,7 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        return view('note.edit',[
+        return view('note.edit', [
             'note' => $note
         ]);
     }
@@ -87,7 +87,7 @@ class NoteController extends Controller
             'user_id' => 'nullable'
         ]);
         $note->update($validated);
-        return redirect('/note')->with('alert','Note Updated!');
+        return redirect('/note')->with('alert', 'Note Updated!');
     }
 
     /**
@@ -99,6 +99,6 @@ class NoteController extends Controller
     public function destroy(Note $note)
     {
         $note->delete();
-        return redirect('/note')->with('alert','Note Removed!');
+        return redirect('/note')->with('alert', 'Note Removed!');
     }
 }

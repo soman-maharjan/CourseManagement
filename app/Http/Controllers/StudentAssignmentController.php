@@ -10,34 +10,36 @@ use App\Models\report;
 
 class StudentAssignmentController extends Controller
 {
-    public function showAssignment(User $user){
-        $student = Student::where('email',$user->email)->first();
-        return view('StudentAssignment.index',[
-        'user' => $user,
-        'student' => $student,
+    public function showAssignment(User $user)
+    {
+        $student = Student::where('email', $user->email)->first();
+        return view('StudentAssignment.index', [
+            'user' => $user,
+            'student' => $student,
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         request()->validate([
             'student_assignment' => 'required',
-            'module_id' => 'required', 
-            'student_id' => 'required', 
+            'module_id' => 'required',
+            'student_id' => 'required',
             'title' => 'required',
-            'description' => 'nullable', 
-            ]);
+            'description' => 'nullable',
+        ]);
 
-        if($request->hasFile('student_assignment')){
+        if ($request->hasFile('student_assignment')) {
             $filenameWithExt = $request->file('student_assignment')->getClientOriginalName();
 
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
 
             $extension = $request->file('student_assignment')->getClientOriginalExtension();
 
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            $filenameToStore = $filename . '_' . time() . '.' . $extension;
 
-            $path = $request->file('student_assignment')->storeAs('public/student_assignment',$filenameToStore);
-        }else{
+            $path = $request->file('student_assignment')->storeAs('public/student_assignment', $filenameToStore);
+        } else {
             $filenameToStore = "nofile";
         }
 
@@ -51,7 +53,6 @@ class StudentAssignmentController extends Controller
 
         $assignment->save();
 
-        return redirect('/assignment-submit/'.auth()->id())->with('alert','Assignment Submitted!');
+        return redirect('/assignment-submit/' . auth()->id())->with('alert', 'Assignment Submitted!');
     }
-    
 }

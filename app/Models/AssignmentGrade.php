@@ -11,7 +11,8 @@ class AssignmentGrade extends Model
 
     protected $table = 'assignment_grade';
 
-    public function report(){
+    public function report()
+    {
         return $this->hasOne(Report::class);
     }
 }

@@ -21,7 +21,6 @@ class CreateCourseModulesTable extends Migration
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
-            
         });
     }
 

@@ -11,22 +11,23 @@ class Module extends Model
 
     protected $guarded = [];
 
-    public function staff(){
-        return $this->belongsTo(Staff::class,'module_leader');
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'module_leader');
     }
 
-    public function course(){
-        return $this->belongsToMany(Course::class, 'course_modules','module_id','course_id');
+    public function course()
+    {
+        return $this->belongsToMany(Course::class, 'course_modules', 'module_id', 'course_id');
     }
 
-    public function assignment(){
+    public function assignment()
+    {
         return $this->hasMany(Assignment::class);
     }
 
-    public function report(){
+    public function report()
+    {
         return $this->hasMany(Report::class);
     }
-
 }
-
-

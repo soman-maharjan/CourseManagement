@@ -41,20 +41,22 @@ class AttendanceController extends Controller
         return redirect('/attendance')->with('success-alert', 'Student Reported!');
     }
 
-    public function edit(Attendance $attendance){
-        return view('attendance.edit',[
+    public function edit(Attendance $attendance)
+    {
+        return view('attendance.edit', [
             'attendance' => $attendance
         ]);
     }
 
-    public function update(Request $request, Attendance $attendance){
+    public function update(Request $request, Attendance $attendance)
+    {
         $attendance->update(request()->validate([
             'module_id' => 'required',
             'student_id' => 'required',
             'status' => 'required',
             'attendance_date' => 'required',
         ]));
-        return redirect('attendance')->with('update-alert','Record Updated!');
+        return redirect('attendance')->with('update-alert', 'Record Updated!');
     }
 
     public function report(Request $request)
@@ -84,25 +86,33 @@ class AttendanceController extends Controller
             'error' => $error
         ]);
     }
-    public function archive(Attendance $attendance){
+    public function archive(Attendance $attendance)
+    {
         $attendance->update([
             'is_archived' => 1
         ]);
-        return redirect('/attendance')->with('archive-alert','Attendance Archieved!');
+        return redirect('/attendance')->with('archive-alert', 'Attendance Archieved!');
     }
 
     public function showArchivedData()
     {
-        $attendances = Attendance::where('is_archived',1)->paginate(10);
-        return view('attendance.archive',[
+        $attendances = Attendance::where('is_archived', 1)->paginate(10);
+        return view('attendance.archive', [
             'attendances' => $attendances
         ]);
     }
 
-    public function unarchive(Attendance $attendance){
+    public function unarchive(Attendance $attendance)
+    {
         $attendance->update([
             'is_archived' => 0
         ]);
-        return redirect('/attendance/archive')->with('archive-alert','Attendance Restored!');
+        return redirect('/attendance/archive')->with('archive-alert', 'Attendance Restored!');
+    }
+
+    public function destroy(Attendance $attendance)
+    {
+        $attendance->delete();
+        return redirect('attendance');
     }
 }

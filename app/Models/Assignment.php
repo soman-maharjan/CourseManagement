@@ -11,11 +11,13 @@ class Assignment extends Model
 
     protected $guarded = [];
 
-    public function module(){
+    public function module()
+    {
         return $this->belongsTo(Module::class);
     }
 
-    public function report(){
+    public function report()
+    {
         return $this->hasOne(Report::class);
     }
 }

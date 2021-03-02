@@ -24,7 +24,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> --}}
     {{-- <link rel="stylesheet" href="{{asset('font-awesome-4.7.0/css/font-awesome.min.css')}}"> --}}
-    <link rel="stylesheet" href="{{asset('fontawesome-free-5.15.2-web/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-5.15.2-web/css/all.min.css') }}">
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -76,7 +76,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -110,17 +110,32 @@
 
     <script>
         tinymce.init({
-            selector:'textarea.note',
+            selector: 'textarea.note',
             width: 900,
             height: 300
         });
-        
-        $(function(){
+
+        $(function() {
             setTimeout(function() {
                 $('.fade-message').slideUp();
             }, 2000);
         });
-        </script>
+
+    </script>
+
+<script>
+    function printDiv(divName){
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+
+    }
+</script>
 </body>
 
 </html>

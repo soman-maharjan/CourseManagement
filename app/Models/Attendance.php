@@ -9,12 +9,13 @@ class Attendance extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    
-    public function student(){
+
+    public function student()
+    {
         return $this->belongsTo(Student::class);
     }
-    public function module(){
+    public function module()
+    {
         return $this->belongsTo(Module::class);
     }
-    
 }

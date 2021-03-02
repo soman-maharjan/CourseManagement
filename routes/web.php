@@ -106,6 +106,9 @@ Route::post('/assignment-submit',[App\Http\Controllers\StudentAssignmentControll
 //grading assignments for staff
 Route::get('/grade',[App\Http\Controllers\ReportController::class,'grade']);
 Route::post('/grade',[App\Http\Controllers\ReportController::class,'store']);
+//display student grade
+Route::get('/student-grade/{user}',[App\Http\Controllers\ReportController::class,'studentGrade']);
+
 
 Route::get('/tutee',[App\Http\Controllers\StaffController::class,'tutee']);
 
@@ -116,5 +119,8 @@ Route::post('/search-student-attendance', [App\Http\Controllers\AttendanceContro
 Route::get('/personal-tutor/students', [App\Http\Controllers\PersonalTutorController::class,'showStudents']);
 Route::get('/personal-tutor/{student}/edit', [App\Http\Controllers\PersonalTutorController::class,'edit']);
 
+
+Route::get('/report',[App\Http\Controllers\ReportController::class,'reportIndex']);
+Route::post('/report',[App\Http\Controllers\ReportController::class,'reportGenerate']);
 
 

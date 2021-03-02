@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Illuminate\Support\Carbon;  
+use Illuminate\Support\Carbon;
 use App\Models\Staff;
 use App\Models\User;
 use Hamcrest\Description;
@@ -154,6 +154,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Soman',
             'last_name' => 'Maharjan',
             'gender' => 'M',
+            'pat_id' => 2,
             'student_id' => '20416264',
             'date_of_birth' => Carbon::now()->format('Y-m-d H:i:s'),
             'date_joined' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -182,6 +183,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Pratik',
             'last_name' => 'Prajapati',
             'student_id' => '20416267',
+            'pat_id' => 2,
             'gender' => 'M',
             'date_of_birth' => Carbon::now()->format('Y-m-d H:i:s'),
             'date_joined' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -197,6 +199,7 @@ class DatabaseSeeder extends Seeder
             'middle_name' => 'Raj',
             'last_name' => 'Manandhar',
             'student_id' => '20416284',
+            'pat_id' => 1,
             'gender' => 'M',
             'date_of_birth' => Carbon::now()->format('Y-m-d H:i:s'),
             'date_joined' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -211,6 +214,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Rabika',
             'last_name' => 'Pradhananga',
             'student_id' => '20416269',
+            'pat_id' => 2,
             'gender' => 'F',
             'date_of_birth' => Carbon::now()->format('Y-m-d H:i:s'),
             'date_joined' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -235,6 +239,20 @@ class DatabaseSeeder extends Seeder
             'name' => 'Soman',
             'email' => 'maharjansoman@yahoo.com',
             'password' => Hash::make('9841551187'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Rabika',
+            'email' => 'rabika@gmail.com',
+            'password' => Hash::make('0000'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Sujayan',
+            'email' => 'sujayan@gmail.com',
+            'password' => Hash::make('0000'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -280,13 +298,15 @@ class DatabaseSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        User::where('email','maharjansoman@yahoo.com')->update(['role_id' => 2]);
-        User::where('email','staff@staff.com')->update(['role_id' => 1]);
-        User::where('email','kumarlamichhane@gmail.com')->update(['role_id' => 1]);
-        User::where('email','nischalkhadka@gmail.com')->update(['role_id' => 1]);
-        User::where('email','rabinthapa@gmail.com')->update(['role_id' => 1]);
-        User::where('email','ankitthapa@gmail.com')->update(['role_id' => 1]);
-        User::where('email','mamta@gmail.com')->update(['role_id' => 1]);
+        User::where('email', 'maharjansoman@yahoo.com')->update(['role_id' => 2]);
+        User::where('email', 'staff@staff.com')->update(['role_id' => 1]);
+        User::where('email', 'kumarlamichhane@gmail.com')->update(['role_id' => 1]);
+        User::where('email', 'nischalkhadka@gmail.com')->update(['role_id' => 1]);
+        User::where('email', 'rabinthapa@gmail.com')->update(['role_id' => 1]);
+        User::where('email', 'ankitthapa@gmail.com')->update(['role_id' => 1]);
+        User::where('email', 'mamta@gmail.com')->update(['role_id' => 1]);
+        User::where('email', 'rabika@gmail.com')->update(['role_id' => 2]);
+        User::where('email', 'sujayan@gmail.com')->update(['role_id' => 2]);
 
         DB::table('modules')->insert([
             'title' => 'Database',
@@ -295,7 +315,7 @@ class DatabaseSeeder extends Seeder
             'start_date' => Carbon::now()->format('Y-m-d H:i:s'),
             'end_date' => Carbon::now()->format('Y-m-d H:i:s'),
             'credit_score' => 20,
-            'module_leader' => 4,
+            'module_leader' => 1,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -350,7 +370,7 @@ class DatabaseSeeder extends Seeder
             'start_date' => Carbon::now()->format('Y-m-d H:i:s'),
             'end_date' => Carbon::now()->format('Y-m-d H:i:s'),
             'credit_score' => 20,
-            'module_leader' => 1,
+            'module_leader' => 4,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -362,6 +382,23 @@ class DatabaseSeeder extends Seeder
             'end_date' => Carbon::now()->format('Y-m-d H:i:s'),
             'credit_score' => 20,
             'module_leader' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('modules')->insert([
+            'title' => 'Science',
+            'module_code' => 'CSY2011',
+            'description' => 'Science module description!',
+            'start_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'end_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'credit_score' => 20,
+            'module_leader' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('course_modules')->insert([
+            'course_id' => '2',
+            'module_id' => '8',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -444,6 +481,174 @@ class DatabaseSeeder extends Seeder
             'student_id' => '2',
             'status' => '0',
             'attendance_date' => Carbon::now()->format('2020-9-10'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Database Assignment 1',
+            'description' => 'Database Assignment Description',
+            'assignment_file' => 'assignment1.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Database Assignment 2',
+            'description' => 'Database 2 Assignment Description',
+            'assignment_file' => 'assignment2.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Computer Communication Assignment 1',
+            'description' => 'Computer Communication Assignment Description',
+            'assignment_file' => 'assignment1.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Computer Communication Assignment 2',
+            'description' => 'Computer Communication 2 Assignment Description',
+            'assignment_file' => 'assignment4.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Web Programming Assignment 1',
+            'description' => 'Web Programming Assignment Description',
+            'assignment_file' => 'assignment3.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 3,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Web Programming Assignment 2',
+            'description' => 'Web Programming Assignment Description',
+            'assignment_file' => 'assignment2.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 3,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Computer System Assignment 1',
+            'description' => 'Computer System Assignment Description',
+            'assignment_file' => 'assignment4.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 4,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Problem Solving and Programming Assignment 1',
+            'description' => 'Problem Solving and Programming Description',
+            'assignment_file' => 'assignment4.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 5,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Operating System Term 1',
+            'description' => 'OS Description',
+            'assignment_file' => 'assignment2.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 6,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignments')->insert([
+            'title' => 'Computer Networks Term 3',
+            'description' => 'Computer Networks Description',
+            'assignment_file' => 'assignment1.doc',
+            'submission_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'module_id' => 7,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('reports')->insert([
+            'student_id' => 1,
+            'student_assignment' => 'student1.doc',
+            'module_id' => 1,
+            'title' => 'Assignment Submission',
+            'description' => 'Assignment Submission for Database.',
+            'assignment_id' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('reports')->insert([
+            'student_id' => 2,
+            'student_assignment' => 'student2.doc',
+            'module_id' => 1,
+            'title' => 'Term 1 Assignment',
+            'description' => 'Assignment Submission for Database.',
+            'assignment_id' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('reports')->insert([
+            'student_id' => 3,
+            'student_assignment' => 'student4.doc',
+            'module_id' => 1,
+            'title' => 'Term 2 Assignment Submission',
+            'description' => 'Assignment Submission for Database.',
+            'assignment_id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('reports')->insert([
+            'student_id' => 1,
+            'student_assignment' => 'student2.doc',
+            'module_id' => 2,
+            'title' => 'Term 3 Assignment',
+            'description' => 'Assignment Submission for Computer Communication.',
+            'assignment_id' => 3,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('reports')->insert([
+            'student_id' => 2,
+            'student_assignment' => 'student3.doc',
+            'module_id' => 2,
+            'title' => 'Term 1 Assignment',
+            'description' => 'Assignment Submission for Computer Communication.',
+            'assignment_id' => 4,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('reports')->insert([
+            'student_id' => 3,
+            'student_assignment' => 'student1.doc',
+            'module_id' => 3,
+            'title' => 'Term 1 Assignment',
+            'description' => 'Assignment Submission for Web Programming.',
+            'assignment_id' => 5,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignment_grade')->insert([
+            'report_id' => 1,
+            'module_id' => 1,
+            'grade' => 'A+',
+            'feedback' => 'Very Good!',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('assignment_grade')->insert([
+            'report_id' => 4,
+            'module_id' => 2,
+            'grade' => 'A',
+            'feedback' => 'Good!',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

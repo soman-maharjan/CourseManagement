@@ -33,7 +33,7 @@ class HomeController extends Controller
         $studentCount = count(Student::all());
         $userCount = count(User::all());
 
-        return view('home',[
+        return view('home', [
             'staffCount' => $staffCount,
             'courseCount' => $courseCount,
             'studentCount' => $studentCount,

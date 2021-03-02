@@ -15,7 +15,6 @@ class AddModuleIdColumnToAttendanceReportTable extends Migration
     {
         Schema::table('attendance_reports', function (Blueprint $table) {
             $table->unsignedBigInteger('module_id');
-
         });
         Schema::table('attendance_reports', function (Blueprint $table) {
 

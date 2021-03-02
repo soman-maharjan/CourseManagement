@@ -13,8 +13,8 @@ class StaffController extends Controller
 
     public function index()
     {
-        $staffs = Staff::where('is_archived',0)->paginate(10);
-        return view('staff.index',[
+        $staffs = Staff::where('is_archived', 0)->paginate(10);
+        return view('staff.index', [
             'staffs' => $staffs
         ]);
     }
@@ -28,7 +28,7 @@ class StaffController extends Controller
     {
         Staff::create(request()->validate([
             'first_name' => 'required',
-            'middle_name' => 'nullable',            
+            'middle_name' => 'nullable',
             'last_name' => 'required',
             'job_title' => 'required',
             'date_of_birth' => 'required',
@@ -46,22 +46,22 @@ class StaffController extends Controller
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        
+
         User::where('email', request()->input('email'))->update(['role_id' => 1]);
 
-        return redirect('/staff')->with('success-alert','Staff Record Added!');
+        return redirect('/staff')->with('success-alert', 'Staff Record Added!');
     }
 
     public function show(Staff $staff)
     {
-        return view('staff.show',[
+        return view('staff.show', [
             'staff' => $staff
         ]);
     }
 
     public function edit(Staff $staff)
     {
-        return view('staff.edit',[
+        return view('staff.edit', [
             'staff' => $staff
         ]);
     }
@@ -70,7 +70,7 @@ class StaffController extends Controller
     {
         $staff->update(request()->validate([
             'first_name' => 'required',
-            'middle_name' => 'nullable',            
+            'middle_name' => 'nullable',
             'last_name' => 'required',
             'job_title' => 'required',
             'date_of_birth' => 'required',
@@ -82,42 +82,45 @@ class StaffController extends Controller
             'address' => 'nullable'
         ]));
 
-        return redirect('/staff')->with('update-alert','Staff Record Updated!');
+        return redirect('/staff')->with('update-alert', 'Staff Record Updated!');
     }
 
     public function destroy(Staff $staff)
     {
-        User::where('email',$staff->email)->delete();
+        User::where('email', $staff->email)->delete();
         $staff->delete();
-        return redirect('/staff')->with('delete-alert','Staff Record Deleted!');
+        return redirect('/staff')->with('delete-alert', 'Staff Record Deleted!');
     }
 
-    public function tutee(){
-        $staff = Staff::where('email',auth()->user()->email)->first(); 
-        return view('Staff.tutee',[
+    public function tutee()
+    {
+        $staff = Staff::where('email', auth()->user()->email)->first();
+        return view('Staff.tutee', [
             'students' => $staff->student
         ]);
     }
 
-    public function archive(Staff $staff){
+    public function archive(Staff $staff)
+    {
         $staff->update([
             'is_archived' => 1
         ]);
-        return redirect('/staff')->with('archive-alert','Staff Record Archieved!');
+        return redirect('/staff')->with('archive-alert', 'Staff Record Archieved!');
     }
 
     public function showArchivedData()
     {
-        $staffs = Staff::where('is_archived',1)->paginate(10);
-        return view('staff.archive',[
+        $staffs = Staff::where('is_archived', 1)->paginate(10);
+        return view('staff.archive', [
             'staffs' => $staffs
         ]);
     }
 
-    public function unarchive(Staff $staff){
+    public function unarchive(Staff $staff)
+    {
         $staff->update([
             'is_archived' => 0
         ]);
-        return redirect('/staff/archive')->with('archive-alert','Staff Record Restored!');
+        return redirect('/staff/archive')->with('archive-alert', 'Staff Record Restored!');
     }
 }

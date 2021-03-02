@@ -8,7 +8,7 @@
     </nav>
 
     @if (Session::has('alert'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success fade-message" role="alert">
             {{ Session::get('alert') }}
         </div>
     @endif
@@ -19,7 +19,7 @@
                 @if ($assignment->report == null)
                     <div class="card assignment-card">
 
-                        <h5 class="card-header">{{ $assignment->title }}</h5>
+                        <h5 class="card-header text-light bg-dark">{{ $assignment->title }}</h5>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label> <br>
-                                    <textarea name="description" id="description" cols="50" rows="3"></textarea>
+                                    <textarea name="description" id="description" cols="50" rows="3">{{ old('description') }}</textarea>
                                     @error('description')
                                         <p style="color: red">{{ $message }}</p>
                                     @enderror
@@ -62,6 +62,9 @@
                                 <input type="hidden" value="{{ $student->id }}" name="student_id">
                                 Upload Your Assignment : <input type="file" class="form-control" id="student_assignment"
                                     name="student_assignment" value="{{ old('student_assignment') }}">
+                                    @error('student_assignment')
+                                        <p style="color: red">{{ $message }}</p>
+                                    @enderror
                                 <br>
                                 <button class="btn btn-success">Submit</button>
                             </form>
@@ -70,4 +73,4 @@
                 @endif
             @endforeach
         @endforeach
-@endsection
+    @endsection

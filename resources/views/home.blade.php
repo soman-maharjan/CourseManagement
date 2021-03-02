@@ -9,7 +9,7 @@
                             <i class="fa fa-user fa-4x"></i>
                         </div>
                         <h6 class="text-uppercase">Users</h6>
-                        <h1 class="display-4">{{$userCount}}</h1>
+                        <h1 class="display-4">{{ $userCount }}</h1>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                             <i class="fa fa-list fa-4x"></i>
                         </div>
                         <h6 class="text-uppercase">Staffs</h6>
-                        <h1 class="display-4">{{$staffCount}}</h1>
+                        <h1 class="display-4">{{ $staffCount }}</h1>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                             <i class="fa fa-users fa-4x"></i>
                         </div>
                         <h6 class="text-uppercase">Students</h6>
-                        <h1 class="display-4">{{$studentCount}}</h1>
+                        <h1 class="display-4">{{ $studentCount }}</h1>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                             <i class="fa fa-book fa-4x"></i>
                         </div>
                         <h6 class="text-uppercase">Courses</h6>
-                        <h1 class="display-4">{{$courseCount}}</h1>
+                        <h1 class="display-4">{{ $courseCount }}</h1>
                     </div>
                 </div>
             </div>

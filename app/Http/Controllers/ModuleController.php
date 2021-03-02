@@ -16,8 +16,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::where('is_archived',0)->paginate(10);
-        return view('module.index',[
+        $modules = Module::where('is_archived', 0)->paginate(10);
+        return view('module.index', [
             'modules' => $modules
         ]);
     }
@@ -31,7 +31,7 @@ class ModuleController extends Controller
     {
         $staffs = Staff::all();
         $courses = Course::all();
-        return view('module.create',[
+        return view('module.create', [
             'staffs' => $staffs,
             'courses' => $courses
         ]);
@@ -53,14 +53,14 @@ class ModuleController extends Controller
             'end_date' => 'required',
             'credit_score' => 'required',
             'module_leader' => 'nullable'
-            ]);
+        ]);
 
         $module = new Module;
         $module->title = request()->input('title');
         $module->description = request()->input('description');
         $module->start_date = request()->input('start_date');
         $module->end_date = request()->input('end_date');
-        $module->module_code = request()->input('module_code');      
+        $module->module_code = request()->input('module_code');
         $module->credit_score = request()->input('credit_score');
         $module->module_leader = request()->input('module_leader');
 
@@ -69,7 +69,7 @@ class ModuleController extends Controller
         $course = Course::find(request()->input('course_id'));
         $module->course()->sync($course);
 
-        return redirect('/module')->with('success-alert','Module Added!');
+        return redirect('/module')->with('success-alert', 'Module Added!');
     }
 
     /**
@@ -80,7 +80,7 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
-        return view('module.show',[
+        return view('module.show', [
             'module' => $module
         ]);
     }
@@ -95,13 +95,11 @@ class ModuleController extends Controller
     {
         $staffs = Staff::all();
         $courses = Course::all();
-        return view('module.edit',[
+        return view('module.edit', [
             'module' => $module,
             'staffs' => $staffs,
             'courses' => $courses
         ]);
-
-        
     }
 
     /**
@@ -121,22 +119,22 @@ class ModuleController extends Controller
             'module_code' => 'required',
             'credit_score' => 'required',
             'module_leader' => 'nullable'
-            ]);
+        ]);
 
         $module->title = request()->input('title');
         $module->description = request()->input('description');
         $module->start_date = request()->input('start_date');
         $module->end_date = request()->input('end_date');
-        $module->module_code = request()->input('module_code');      
+        $module->module_code = request()->input('module_code');
         $module->credit_score = request()->input('credit_score');
         $module->module_leader = request()->input('module_leader');
 
         $module->save();
-        
+
         $course = Course::find(request()->input('course_id'));
         $module->course()->sync($course);
 
-        return redirect('/module')->with('update-alert','Module Updated!');
+        return redirect('/module')->with('update-alert', 'Module Updated!');
     }
 
     /**
@@ -148,29 +146,30 @@ class ModuleController extends Controller
     public function destroy(Module $module)
     {
         $module->delete();
-        return redirect('/module')->with('delete-alert','Module Removed!');
-
+        return redirect('/module')->with('delete-alert', 'Module Removed!');
     }
 
-    public function archive(Module $module){
+    public function archive(Module $module)
+    {
         $module->update([
             'is_archived' => 1
         ]);
-        return redirect('/module')->with('archive-alert','Module Record Archieved!');
+        return redirect('/module')->with('archive-alert', 'Module Record Archieved!');
     }
 
     public function showArchivedData()
     {
-        $modules = Module::where('is_archived',1)->paginate(10);
-        return view('module.archive',[
+        $modules = Module::where('is_archived', 1)->paginate(10);
+        return view('module.archive', [
             'modules' => $modules
         ]);
     }
 
-    public function unarchive(Module $module){
+    public function unarchive(Module $module)
+    {
         $module->update([
             'is_archived' => 0
         ]);
-        return redirect('/module/archive')->with('archive-alert','Module Record Restored!');
+        return redirect('/module/archive')->with('archive-alert', 'Module Record Restored!');
     }
 }

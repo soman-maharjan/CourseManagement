@@ -23,7 +23,6 @@ class CreateAssignmentGradeTable extends Migration
 
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
             $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
-
         });
     }
 

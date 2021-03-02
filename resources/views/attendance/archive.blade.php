@@ -60,15 +60,17 @@
                         </td>
                         <td>{{ $attendance->attendance_date }}</td>
                         <td style="display: inline-flex">
-                            <a href="/attendance/{{ $attendance->id }}/edit"><button class="btn action_button">
-                                    <i class="far fa-2x fa-edit" style="color: #2B60DE"></i>
-                                </button>
-                            </a>
                             <a href="/attendance/unarchive/{{ $attendance->id }}"><button
                                     class="btn action_button action_button_margin">
                                     <i class="far fa-file-archive fa-2x" style="color: black"></i>
                                 </button>
                             </a>
+                            <form action="/attendance/{{ $attendance->id }}" method="POST">
+                                <input type="hidden" name="_method" value="delete" />
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <button class="btn action_button action_button_margin"><i class="far fa-trash-alt fa-2x"
+                                        style="color: red"></i></button>
+                            </form>
                         </td>
                         <td>
                             <form method="POST" action="/attendance/report" accept-charset="UTF-8">
@@ -77,6 +79,8 @@
                                 <input type="hidden" name="module_id" value="{{ $attendance->module->id }}">
                                 <button class="btn btn-danger" style="padding:2px;width:60px">Report</button>
                             </form>
+
+
                         </td>
                     </tr>
                 @endforeach

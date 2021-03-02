@@ -6,7 +6,7 @@
             @foreach ($student->course->module as $module)
                 <div class="col-sm-6">
                     <div class="card" style="margin-bottom: 20px">
-                        <div class="card-header">
+                        <div class="card-header text-light bg-dark">
                             {{ $module->title }}
                         </div>
                         <div class="card-body">
