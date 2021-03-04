@@ -7,7 +7,7 @@ use App\Models\Staff;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -32,12 +32,19 @@ class HomeController extends Controller
         $courseCount = count(Course::all());
         $studentCount = count(Student::all());
         $userCount = count(User::all());
-
-        return view('home', [
-            'staffCount' => $staffCount,
-            'courseCount' => $courseCount,
-            'studentCount' => $studentCount,
-            'userCount' => $userCount
-        ]);
+        if (Auth::user()->role_id == 2) {
+            $student = Student::where('email',auth()->user()->email)->first();
+            return view('profile.student-profile',[
+                'student' => $student
+            ]);
+        } else {
+            return view('home', [
+                'staffCount' => $staffCount,
+                'courseCount' => $courseCount,
+                'studentCount' => $studentCount,
+                'userCount' => $userCount
+            ]);
+        }
+        
     }
 }

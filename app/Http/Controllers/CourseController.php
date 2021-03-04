@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Module;
 use App\Models\Staff;
-use App\Models\User;
 
 class CourseController extends Controller
 {
