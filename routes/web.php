@@ -5,6 +5,7 @@ use Illuminate\Support\Carbon;
 use App\Models\User;
 use App\Models\Student;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Auth::routes(['register' => false,'reset' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function () {
 
 //Archive Student Record
 Route::get('/student/archive', [App\Http\Controllers\StudentController::class,'showArchivedData']);
@@ -54,17 +57,17 @@ Route::get('/attendance/unarchive/{attendance}', [App\Http\Controllers\Attendanc
 
 //Resource Controllers
 
-Route::resource('/course',App\Http\Controllers\CourseController::class)->middleware('auth');
+Route::resource('/course',App\Http\Controllers\CourseController::class);
 
-Route::resource('/student',App\Http\Controllers\StudentController::class)->middleware('auth');
+Route::resource('/student',App\Http\Controllers\StudentController::class);
 
-Route::resource('/staff',App\Http\Controllers\StaffController::class)->middleware('auth');
+Route::resource('/staff',App\Http\Controllers\StaffController::class);
 
-Route::resource('/module',App\Http\Controllers\ModuleController::class)->middleware('auth');
+Route::resource('/module',App\Http\Controllers\ModuleController::class);
 
-Route::resource('/assignment',App\Http\Controllers\AssignmentController::class)->middleware('auth');
+Route::resource('/assignment',App\Http\Controllers\AssignmentController::class);
 
-Route::resource('/attendance',App\Http\Controllers\AttendanceController::class)->middleware('auth');
+Route::resource('/attendance',App\Http\Controllers\AttendanceController::class);
 
 Route::post('/attendance/report', [App\Http\Controllers\AttendanceController::class, 'report'])->name('report');
 
@@ -122,5 +125,4 @@ Route::get('/personal-tutor/{student}/edit', [App\Http\Controllers\PersonalTutor
 
 Route::get('/report',[App\Http\Controllers\ReportController::class,'reportIndex']);
 Route::post('/report',[App\Http\Controllers\ReportController::class,'reportGenerate']);
-
-
+});
