@@ -5,6 +5,12 @@
             {{ Session::get('alert') }}
         </div>
     @endif
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item">Personal Tutor</li>
+        </ol>
+    </nav>
     <div>
         <a href="/personal-tutor/students"><button class="btn btn-dark create-button">View Pat Assigned
                 Students</button></a>

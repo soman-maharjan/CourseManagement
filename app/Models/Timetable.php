@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Assignment extends Model
+class Timetable extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function module()
-    {
+    public function module(){
         return $this->belongsTo(Module::class);
     }
 
-    public function report()
-    {
-        return $this->hasMany(Report::class);
+    public function getStudentModules(){
+        $student = Student::where('email',auth()->user()->email)->first();
+        return $student->course->module;
     }
 }

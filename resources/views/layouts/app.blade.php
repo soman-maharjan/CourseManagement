@@ -8,9 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Course Management System</title>
+    <title>Woodlands University College</title>
 
-
+    <link rel="icon" href="{{asset('icons/logo.bmp')}}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

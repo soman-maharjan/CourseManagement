@@ -652,5 +652,41 @@ class DatabaseSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+        DB::table('timetables')->insert([
+            'start_time' => '06:00:00',
+            'end_time' => '08:00:00',
+            'day' => 'Sunday',
+            'module_id' => '1',
+        ]);
+        DB::table('timetables')->insert([
+            'start_time' => '09:00:00',
+            'end_time' => '10:00:00',
+            'day' => 'Sunday',
+            'module_id' => '2',
+        ]);
+        DB::table('timetables')->insert([
+            'start_time' => '12:00:00',
+            'end_time' => '14:00:00',
+            'day' => 'Sunday',
+            'module_id' => '3',
+        ]);
+        DB::table('timetables')->insert([
+            'start_time' => '06:00:00',
+            'end_time' => '08:00:00',
+            'day' => 'Monday',
+            'module_id' => '2',
+        ]);
+        DB::table('timetables')->insert([
+            'start_time' => '09:00:00',
+            'end_time' => '10:00:00',
+            'day' => 'Monday',
+            'module_id' => '3',
+        ]);
+        DB::table('timetables')->insert([
+            'start_time' => '10:00:00',
+            'end_time' => '11:30:00',
+            'day' => 'Tuesday',
+            'module_id' => '5',
+        ]);
     }
 }

@@ -2,8 +2,8 @@
 @section('content')
     <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Grades</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item">Grades</a></li>
         </ol>
     </nav>
     @if (count($reports) > 0)

@@ -8,7 +8,7 @@
         <a href="/student-tutor/{{ auth()->id() }}">Personal Tutor</a>
         <a href="/assignment-submit/{{ auth()->id() }}" style="line-height: 0.9">Submit Assignment</a>
         <a href="/student-grade/{{ auth()->id() }}">Grade</a>
-        <a href="/calendar">Calendar</a>
+        <a href="/class">Time Table</a>
         <a href="/note">Diary</a>
     </div>
 
@@ -21,7 +21,7 @@
         <a href="/attendance">Attendance</a>
         <a href="/grade" style="line-height: 0.9">Grade Assignments</a>
         <a href="/tutee">Tutees</a>
-        <a href="/calendar">Calendar</a>
+        <a href="/timetable">Time Table</a>
         <a href="/note">Diary</a>
         <a href="/report">Generate Report</a>
     </div>
@@ -37,7 +37,7 @@
         {{-- <a href="/assignment">Assignments</a> --}}
         <a href="/attendance">Attendance</a>
         <a href="/personal-tutor">Personal Tutor</a>
-        <a href="/calendar">Calendar</a>
+        <a href="/timetable">Time Table</a>
         <a href="/note">Diary</a>
         <a href="/report">Generate Report</a>
     </div>

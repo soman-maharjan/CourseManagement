@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item">Report</li>
+    </ol>
+</nav>
     <h4>Enter Details To Generate Report</h4>
     <form method="POST" action="/report">
         @csrf

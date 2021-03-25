@@ -26,13 +26,9 @@
         If for any reason you are experiencing difficulties which impact on your academic work, you should contact your
         personal tutor for advice. You must however see me as instructed by the {{ $date }}. <br> <br>
 
-        Yours sincerely
+        Yours sincerely,
         <br>
-
-        Module Co-Ordinater
-
-        CC Student file / Course Leader
-        CAUSE FOR CONCERN LETTER
+        Student Service
 
     </div>
 @endsection

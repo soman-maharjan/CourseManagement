@@ -55,6 +55,11 @@ Route::get('/attendance/archive', [App\Http\Controllers\AttendanceController::cl
 Route::get('/attendance/archive/{attendance}', [App\Http\Controllers\AttendanceController::class,'archive']);
 Route::get('/attendance/unarchive/{attendance}', [App\Http\Controllers\AttendanceController::class,'unarchive']);
 
+//Archive Timetable Record
+Route::get('/timetable/archive', [App\Http\Controllers\TimetableController::class,'showArchivedData']);
+Route::get('/timetable/archive/{timetable}', [App\Http\Controllers\TimetableController::class,'archive']);
+Route::get('/timetable/unarchive/{timetable}', [App\Http\Controllers\TimetableController::class,'unarchive']);
+
 //Resource Controllers
 
 Route::resource('/course',App\Http\Controllers\CourseController::class);
@@ -77,10 +82,10 @@ Route::get('/personal-tutor/create', [App\Http\Controllers\PersonalTutorControll
 
 Route::post('/personal-tutor', [App\Http\Controllers\PersonalTutorController::class, 'assign']);
 
-Route::get('/calendar', function () {
-    $time = Carbon::now()->format('Y-m-d');
-    return view('Calendar.calendar')->with('time',$time);
-});
+// Route::get('/calendar', function () {
+//     $time = Carbon::now()->format('Y-m-d');
+//     return view('Calendar.calendar')->with('time',$time);
+// });
 
 Route::get('/student/profile/{user}',[App\Http\Controllers\ProfileController::class,'showStudentProfile']);
 
@@ -125,4 +130,8 @@ Route::get('/personal-tutor/{student}/edit', [App\Http\Controllers\PersonalTutor
 
 Route::get('/report',[App\Http\Controllers\ReportController::class,'reportIndex']);
 Route::post('/report',[App\Http\Controllers\ReportController::class,'reportGenerate']);
+
+Route::resource('/timetable' , \App\Http\Controllers\TimetableController::class);
+
+Route::get('/class',[\App\Http\Controllers\TimetableController::class,'class']);
 });

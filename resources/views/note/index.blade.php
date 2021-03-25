@@ -5,6 +5,12 @@
             {{ Session::get('alert') }}
         </div>
     @endif
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item">Diary</li>
+        </ol>
+    </nav>
     <div>
         <a href="/note/create"><button class="btn btn-success create-button">Create a new Note</button></a>
     </div>

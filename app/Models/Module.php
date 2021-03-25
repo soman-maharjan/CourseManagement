@@ -30,4 +30,8 @@ class Module extends Model
     {
         return $this->hasMany(Report::class);
     }
+
+    public function timetable(){
+        return $this->hasMany(Timetable::class);
+    }
 }

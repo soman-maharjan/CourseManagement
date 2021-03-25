@@ -1,18 +1,16 @@
 @extends('layouts.app')
 @section('content')
-    <nav aria-label="breadcrumb" class="main-breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Submit Assignment</a></li>
-        </ol>
-    </nav>
-
     @if (Session::has('alert'))
         <div class="alert alert-success fade-message" role="alert">
             {{ Session::get('alert') }}
         </div>
     @endif
-
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item">Submit Assignment</li>
+        </ol>
+    </nav>
     <div>
         @foreach ($student->course->module as $module)
             @foreach ($module->assignment as $assignment)
@@ -51,7 +49,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label> <br>
-                                    <textarea name="description" id="description" cols="50" rows="3">{{ old('description') }}</textarea>
+                                    <textarea name="description" id="description" cols="50"
+                                        rows="3">{{ old('description') }}</textarea>
                                     @error('description')
                                         <p style="color: red">{{ $message }}</p>
                                     @enderror
@@ -62,9 +61,9 @@
                                 <input type="hidden" value="{{ $student->id }}" name="student_id">
                                 Upload Your Assignment : <input type="file" class="form-control" id="student_assignment"
                                     name="student_assignment" value="{{ old('student_assignment') }}">
-                                    @error('student_assignment')
-                                        <p style="color: red">{{ $message }}</p>
-                                    @enderror
+                                @error('student_assignment')
+                                    <p style="color: red">{{ $message }}</p>
+                                @enderror
                                 <br>
                                 <button class="btn btn-success">Submit</button>
                             </form>

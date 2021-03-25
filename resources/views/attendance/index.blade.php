@@ -20,6 +20,12 @@
             {{ Session::get('archive-alert') }}
         </div>
     @endif
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item">Attendances</li>
+        </ol>
+    </nav>
     <div>
         <form class="form-inline my-2 my-lg-0" style="display:inline" action="/search-student-attendance" method="POST">
             @csrf
@@ -77,7 +83,8 @@
                         <td>
                             <form method="POST" action="/attendance/report" accept-charset="UTF-8">
                                 @csrf
-                                <input name="student_id" type="hidden" value="{{ $attendance->id }}">
+                                <input name="date" type="hidden" value="{{ $attendance->attendance_date }}">
+                                <input name="student_id" type="hidden" value="{{ $attendance->student_id }}">
                                 <input type="hidden" name="module_id" value="{{ $attendance->module->id }}">
                                 <button class="btn btn-danger" style="padding:2px;width:60px">Report</button>
                             </form>

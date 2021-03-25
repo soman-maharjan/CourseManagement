@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReportStudent;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Module;
 use App\Models\AttendanceReport;
-
+use Exception;
+use Illuminate\Support\Facades\Mail;
 
 class AttendanceController extends Controller
 {
@@ -38,7 +40,7 @@ class AttendanceController extends Controller
             'status' => 'required',
             'attendance_date' => 'required',
         ]));
-        return redirect('/attendance')->with('success-alert', 'Student Reported!');
+        return redirect('/attendance')->with('success-alert', "Student's Attendance Added!");
     }
 
     public function edit(Attendance $attendance)
@@ -65,6 +67,15 @@ class AttendanceController extends Controller
             'student_id' => 'required',
             'module_id' => 'required'
         ]));
+        $student = Student::where('id', $request->student_id)->first();
+        $module = Module::where('id', $request->module_id)->first();
+
+        try {
+            Mail::to($student->email)->send(new ReportStudent($student, $module, $request->date));
+        } catch (Exception $e) {
+            return redirect('/attendance')->with('report-alert', 'Problem with sending mail. Please try again later!');
+        }
+
         return redirect('/attendance')->with('report-alert', 'Student Reported!');
     }
 
@@ -113,6 +124,6 @@ class AttendanceController extends Controller
     public function destroy(Attendance $attendance)
     {
         $attendance->delete();
-        return redirect('attendance');
+        return redirect('attendance')->with('report-alert', 'Attendance Deleted!');
     }
 }
