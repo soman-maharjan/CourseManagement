@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item">Assignments</a></li>
+    </ol>
+</nav>
     <div class="container-fluid">
         <h4 style="margin-top: 10px">Modules</h4>
         <div class="row">

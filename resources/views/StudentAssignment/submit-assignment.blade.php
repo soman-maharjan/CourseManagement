@@ -14,9 +14,8 @@
     <div>
         @foreach ($student->course->module as $module)
             @foreach ($module->assignment as $assignment)
-                @if ($assignment->report == null)
+                @if (count($assignment->report) == 0)
                     <div class="card assignment-card">
-
                         <h5 class="card-header text-light bg-dark">{{ $assignment->title }}</h5>
                         <div class="card-body">
                             <div class="row">

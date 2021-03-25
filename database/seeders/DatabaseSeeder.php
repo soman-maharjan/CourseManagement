@@ -688,5 +688,10 @@ class DatabaseSeeder extends Seeder
             'day' => 'Tuesday',
             'module_id' => '5',
         ]);
+        DB::table('notes')->insert([
+            'user_id' => '2',
+            'title' => 'Laravel',
+            'note' => 'Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller (MVC) architectural pattern',
+        ]);
     }
 }
