@@ -693,5 +693,155 @@ class DatabaseSeeder extends Seeder
             'title' => 'Laravel',
             'note' => 'Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller (MVC) architectural pattern',
         ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 0
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 0
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 0
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 0
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 0
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '2',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 0
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '2',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 0
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '2',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 0
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '2',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '5',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '5',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '5',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '5',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '5',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '3',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '3',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '3',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '3',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '1',
+            'module_id' => '3',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
     }
 }

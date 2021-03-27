@@ -134,4 +134,6 @@ Route::post('/report',[App\Http\Controllers\ReportController::class,'reportGener
 Route::resource('/timetable' , \App\Http\Controllers\TimetableController::class);
 
 Route::get('/class',[\App\Http\Controllers\TimetableController::class,'class']);
+
+Route::get('/student-attendance',[\App\Http\Controllers\AttendanceController::class,'studentAttendance']);
 });

@@ -8,6 +8,7 @@
         <a href="/student-tutor/{{ auth()->id() }}">Personal Tutor</a>
         <a href="/assignment-submit/{{ auth()->id() }}" style="line-height: 0.9">Submit Assignment</a>
         <a href="/student-grade/{{ auth()->id() }}">Grade</a>
+        <a href="/student-attendance">Attendance</a>
         <a href="/class">Time Table</a>
         <a href="/note">Diary</a>
     </div>

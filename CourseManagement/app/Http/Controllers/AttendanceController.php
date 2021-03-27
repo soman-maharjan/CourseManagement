@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Module;
 use App\Models\AttendanceReport;
+use App\Models\Course;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Mail;
 
@@ -125,5 +127,15 @@ class AttendanceController extends Controller
     {
         $attendance->delete();
         return redirect('attendance')->with('report-alert', 'Attendance Deleted!');
+    }
+
+    public function studentAttendance()
+    {
+        $student = Student::where('email', auth()->user()->email)->first();
+        $course = Course::where('id', $student->course_id)->first();
+        return view('attendance.student',[
+            'student' => $student,
+            'modules' => $course->module
+        ]);
     }
 }
