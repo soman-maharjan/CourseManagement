@@ -6,7 +6,7 @@ Installation Guide
 ```
 composer global require "laravel/installer=~1.1"
 git clone https://github.com/soman-maharjan/CourseManagement.git
-cd CourseManagement
+cd CourseManagement/CourseManagement
 composer install
 npm install
 php artisan key:generate
