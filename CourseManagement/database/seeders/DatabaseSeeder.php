@@ -700,8 +700,20 @@ class DatabaseSeeder extends Seeder
             'status' => 1
         ]);
         DB::table('attendances')->insert([
-            'student_id' => '1',
+            'student_id' => '2',
             'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '4',
+            'module_id' => '1',
+            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status' => 1
+        ]);
+        DB::table('attendances')->insert([
+            'student_id' => '3',
+            'module_id' => '4',
             'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
             'status' => 1
         ]);
@@ -709,16 +721,10 @@ class DatabaseSeeder extends Seeder
             'student_id' => '1',
             'module_id' => '1',
             'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
-            'status' => 1
+            'status' => 0
         ]);
         DB::table('attendances')->insert([
-            'student_id' => '1',
-            'module_id' => '1',
-            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
-            'status' => 1
-        ]);
-        DB::table('attendances')->insert([
-            'student_id' => '1',
+            'student_id' => '5',
             'module_id' => '1',
             'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
             'status' => 0
@@ -736,13 +742,7 @@ class DatabaseSeeder extends Seeder
             'status' => 0
         ]);
         DB::table('attendances')->insert([
-            'student_id' => '1',
-            'module_id' => '1',
-            'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
-            'status' => 0
-        ]);
-        DB::table('attendances')->insert([
-            'student_id' => '1',
+            'student_id' => '3',
             'module_id' => '1',
             'attendance_date' => Carbon::now()->format('Y-m-d H:i:s'),
             'status' => 0

@@ -82,11 +82,6 @@ Route::get('/personal-tutor/create', [App\Http\Controllers\PersonalTutorControll
 
 Route::post('/personal-tutor', [App\Http\Controllers\PersonalTutorController::class, 'assign']);
 
-// Route::get('/calendar', function () {
-//     $time = Carbon::now()->format('Y-m-d');
-//     return view('Calendar.calendar')->with('time',$time);
-// });
-
 Route::get('/student/profile/{user}',[App\Http\Controllers\ProfileController::class,'showStudentProfile']);
 
 Route::get('/staff/profile/{user}',[App\Http\Controllers\ProfileController::class,'showStaffProfile']);
